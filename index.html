@@ -63,6 +63,80 @@
           <button class="btn btn-outline-primary btn-lg btn-block" onclick="cadastroSalas()">+ Cadastro de Salas
           </button>
         </div>
+
+         <div class="modal fade" id="modalum" tabindex="-1" role="dialog" aria-labelledby="meumodallabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="meumodallabel">Cadastro de Salas</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Fechar">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <form>
+  <div class="modal-body">
+
+    <div class="form-row mb-3">
+      <div class="form-group col-md-4">
+        <label for="bloco">Bloco</label>
+        <select id="bloco" class="form-control" onchange="atualizarSalas()">
+          <option selected disabled>Selecione</option>
+          <option>Bloco A</option>
+          <option>Bloco B</option>
+          <option>Bloco C</option>
+          <option>Bloco D</option>
+          <option>Bloco E</option>
+          <option>Bloco F</option>
+          <option>Bloco G</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="sala">Sala</label>
+        <select id="sala" class="form-control">
+          <option selected disabled>Selecione o bloco primeiro</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="capacidade">Capacidade</label>
+        <input type="number" class="form-control" id="capacidade" placeholder="Número de pessoas" min="0" max="30">
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="tipo">Tipo</label>
+      <select id="tipo" class="form-control">
+        <option selected disabled>Selecione</option>
+        <option>Laboratório</option>
+        <option>Sala de aula</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="cpfResponsavel">CPF do Responsável</label>
+        <input type="text" class="form-control" id="cpfResponsavel" placeholder="000.000.000-00">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="nomeResponsavel">Nome do Responsável</label>
+        <input type="text" class="form-control" id="nomeResponsavel" placeholder="Nome completo">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar cadastro</button>
+    <button type="submit" class="btn btn-primary">Cadastrar sala</button>
+  </div>
+</form>
+
+            </div>
+          </div>
+        </div>
+
         <div class="col-md-6 mb-3">
           <button class="btn btn-outline-success btn-lg btn-block" onclick="realizarAgendamento()">Realizar
             Agendamentos</button>
@@ -128,19 +202,52 @@
     &copy; 2025 Colégio Politécnico da UFSM
   </footer>
 
-  <!-- Scripts Bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-  <!-- JS personalizado -->
-  <script src="script.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<script src="script.js"></script>
+
+<script>
+  function cadastroSalas() {
+    $('#modalum').modal('show');
+  }
+
+  const salasPorBloco = {
+    "Bloco A": ["A1", "A2", "A3"],
+    "Bloco B": ["B101", "B201", "B301"],
+    "Bloco C": ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10"],
+    "Bloco D": ["D1", "D2", "D3", "D4"],
+    "Bloco E":["E101", "E102", "E103"],
+    "Bloco F":["F101", "F102", "F201", "F202", "F203"],
+    "Bloco G":["G1", "G2", "G3"]
+  };
+
+  function atualizarSalas() {
+    const blocoSelect = document.getElementById('bloco');
+    const salaSelect = document.getElementById('sala');
+    const blocoSelecionado = blocoSelect.value;
+
+    salaSelect.innerHTML = '';
+
+    if (!blocoSelecionado || !salasPorBloco[blocoSelecionado]) {
+      salaSelect.innerHTML = '<option disabled selected>Selecione o bloco primeiro</option>';
+      return;
+    }
+
+    salasPorBloco[blocoSelecionado].forEach(sala => {
+      const option = document.createElement('option');
+      option.value = sala;
+      option.textContent = sala;
+      salaSelect.appendChild(option);
+    });
+  }
+</script>
+
 </body>
 
 </html>
+
