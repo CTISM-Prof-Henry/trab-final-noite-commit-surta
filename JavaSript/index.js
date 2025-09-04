@@ -1,5 +1,8 @@
+
+console.log("Script.js carregado");
+
 function cadastroSalas() {
-  alert("Cadastro de salas em desenvolvimento!");
+  $('#modalum').modal('show');
 }
 
 function realizarAgendamento() {
@@ -13,3 +16,4 @@ function consultarAgendamentos() {
 function consultarCadastros() {
   alert("Consulta de cadastros em desenvolvimento!");
 }
+
