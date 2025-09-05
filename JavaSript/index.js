@@ -5,15 +5,15 @@ function cadastroSalas() {
   $('#modalum').modal('show');
 }
 
-function realizarAgendamento() {
-  alert("Agendamento em desenvolvimento!");
-}
+     function realizarAgendamento() {
+            $('#modalquatro').modal('show');
+        }
+        function consultarAgendamentos() {
+            $('#modaltres').modal('show');
+        }
 
-function consultarAgendamentos() {
-  alert("Consulta de agendamentos em desenvolvimento!");
-}
+        function consultarCadastros() {
+            $('#modaldois').modal('show');
+        }
 
-function consultarCadastros() {
-  alert("Consulta de cadastros em desenvolvimento!");
-}
 
