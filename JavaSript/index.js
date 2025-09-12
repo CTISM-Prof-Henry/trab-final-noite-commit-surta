@@ -4,7 +4,7 @@ function cadastroSalas() {
 }
 
 function realizarAgendamento() {
-  $('#modalquatro').modal('show');
+  $('#modalAgendamento').modal('show');
 }
 
 function consultarAgendamentos() {
@@ -15,7 +15,7 @@ function consultarCadastros() {
   $('#modaltres').modal('show');
 }
 
-// Dados de salas por bloco
+
 const salasPorBloco = {
   "Bloco A": ["A1", "A2", "A3"],
   "Bloco B": ["B101", "B201", "B301"],
@@ -26,11 +26,9 @@ const salasPorBloco = {
   "Bloco G": ["G1", "G2", "G3"]
 };
 
-// Atualizar lista de salas ao escolher o bloco
-// Passa os IDs dos selects como parâmetros para funcionar em qualquer modal
-function atualizarSalas(blocoSelectId, salaSelectId) {
-  const blocoSelect = document.getElementById(blocoSelectId);
-  const salaSelect = document.getElementById(salaSelectId);
+function atualizarSalas() {
+  const blocoSelect = document.getElementById('bloco');
+  const salaSelect = document.getElementById('sala');
   const blocoSelecionado = blocoSelect.value;
 
   salaSelect.innerHTML = '';
