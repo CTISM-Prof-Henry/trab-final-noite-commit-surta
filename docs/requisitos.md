@@ -1,22 +1,34 @@
 
 `docs/requisitos.md`
-```markdown
-# Requisitos de Sistema
 
-## Sistema Operacional suportado
-- Windows 10 ou superior
-- Ubuntu 20.04 / 22.04
-- macOS Monterey ou superior
+# ⚙️ Requisitos do Sistema
 
-## Softwares necessários
-- Python 3.10+
-- Git (>=2.20)
-- Node.js (se o projeto usa frontend) — Node 16+
-- Docker (opcional, se houver docker-compose)
+---
 
-## Bibliotecas / Dependências
-As dependências estão no `requirements.txt` (Python) ou `package.json` (Node).
-Instalação:
-```bash
-pip install -r requirements.txt
-npm install
+## 💻 Requisitos Mínimos
+
+| Tipo | Especificação |
+|------|----------------|
+| Sistema Operacional | Windows 10 / Ubuntu 20.04 / macOS Monterey |
+| Processador | Intel Core i3 / Ryzen 3 (ou equivalente) |
+| Memória RAM | 4 GB |
+| Armazenamento | 2 GB livres |
+| Python | Versão 3.10+ |
+| Navegador | Google Chrome / Edge / Firefox / Opera |
+
+---
+
+## 💪 Requisitos Recomendados
+
+| Tipo | Especificação |
+|------|----------------|
+| Sistema Operacional | Windows 11 / Ubuntu 22.04 / macOS Ventura |
+| Processador | Intel Core i5 / Ryzen 5 |
+| Memória RAM | 8 GB ou mais |
+| Armazenamento | SSD com 10 GB livres |
+| Python | Versão 3.12+ |
+| VS Code | Última versão estável |
+| Navegador | Google Chrome / Edge / Firefox / Opera |
+
+
+---
