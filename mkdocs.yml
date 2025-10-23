@@ -1,5 +1,7 @@
 site_name: Tutorial Documentação com MKDocs
+
 theme: readthedocs
+
 markdown_extensions:
   - attr_list
   - footnotes
@@ -10,3 +12,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+
+nav:
+  - Início: index.md
+  - Tutorial: tutorial.md
+  - Requisitos: requisitos.md
