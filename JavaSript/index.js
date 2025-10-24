@@ -29,6 +29,7 @@ const salasPorBloco = {
 function atualizarSalas() {
   const blocoSelect = document.getElementById('bloco');
   const salaSelect = document.getElementById('sala');
+  const blocoagendSelect = document.getElementById('blocoAgendamento');
   const blocoSelecionado = blocoSelect.value;
 
   salaSelect.innerHTML = '';
