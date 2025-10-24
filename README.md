@@ -4,7 +4,6 @@
 ## Sumário
 
 * [Pré-requisitos](#pré-requisitos)
-* [Instalação](#instalação)
 * [Instruções de uso](#instruções-de-uso)
 * [Contato](#contato)
 * [Bibliografia](#bibliografia)
@@ -32,7 +31,7 @@ https://ctism-prof-henry.github.io/trab-final-noite-commit-surta/
 
 Diretório desenvolvido por:
 
-* Anderson da silva rossini => anderson.silvarossini@gmail.com
+* Anderson da Silva Rossini => anderson.silvarossini@gmail.com
 * Erick Posser Mathias => possermathiasb@gmail.com
 
 ## Bibliografia
