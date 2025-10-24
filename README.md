@@ -1,8 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/BJmkW5Ih)
 # Título do repositório
 
-Descrição curta do repositório.
-
 ## Sumário
 
 * [Pré-requisitos](#pré-requisitos)
@@ -19,35 +17,23 @@ para sua execução (por exemplo, placa de vídeo dedicada):
 
 | Configuração        | Valor                    |
 |---------------------|--------------------------|
-| Sistema operacional | Windows 10 Pro (64 bits) |
+| Sistema operacional | Windows 10 (64 bits) |
 | Processador         | Intel core i7 9700       |
 | Memória RAM         | 16GB                     |
 | Necessita rede?     | Sim                      |
 
-
-## Instalação
-
-Descreva aqui as instruções para instalação das ferramentas para execução do código-fonte: 
-
-```bash
-sudo apt-get install nano
-```
-
 ## Instruções de Uso
 
-Descreva aqui o passo-a-passo que outros usuários precisam realizar para conseguir executar com sucesso o código-fonte
-deste projeto:
+Para mais instruções de uso, aplicativos para download e configurações. Acesse:
 
-```bash
-echo "olá mundo!"
-```
+https://ctism-prof-henry.github.io/trab-final-noite-commit-surta/
 
 ## Contato
 
-O repositório foi originalmente desenvolvido por Fulano: [fulano@ufsm.br]()
+Diretório desenvolvido por:
 
-
-https://ctism-prof-henry.github.io/trab-final-noite-commit-surta/
+* Anderson da silva rossini => anderson.silvarossini@gmail.com
+* Erick Posser Mathias => possermathiasb@gmail.com
 
 ## Bibliografia
 
