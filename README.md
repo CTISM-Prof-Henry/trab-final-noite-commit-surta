@@ -19,7 +19,7 @@ para sua execução (por exemplo, placa de vídeo dedicada):
 |---------------------|--------------------------|
 | Sistema operacional | Windows 10 (64 bits) |
 | Processador         | Intel core i7 9700       |
-| Memória RAM         | 16GB                     |
+| Memória RAM         | 8GB                     |
 | Necessita rede?     | Sim                      |
 
 ## Instruções de Uso
