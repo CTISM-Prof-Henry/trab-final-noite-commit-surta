@@ -1,34 +1,33 @@
-
-`docs/requisitos.md`
-
-# ⚙️ Requisitos do Sistema
+# Requisitos do Sistema
 
 ---
 
-## 💻 Requisitos Mínimos
+## Requisitos Necessários
 
-| Tipo | Especificação |
-|------|----------------|
-| Sistema Operacional | Windows 10 / Ubuntu 20.04 / macOS Monterey |
-| Processador | Intel Core i3 / Ryzen 3 (ou equivalente) |
-| Memória RAM | 4 GB |
-| Armazenamento | 2 GB livres |
-| Python | Versão 3.10+ |
-| Navegador | Google Chrome / Edge / Firefox / Opera |
+O sistema foi desenvolvido utilizando **HTML**, **CSS** e **JavaScript puro**, sem dependências externas.  
+Para utilizá-lo corretamente, é necessário apenas um ambiente básico de navegação e acesso.
+
+| Requisito | Descrição |
+|------------|------------|
+| Acesso à Internet | Necessário para abrir o site e testar as páginas hospedadas. |
+| Navegador Atualizado | Recomendado utilizar **Google Chrome**, **Mozilla Firefox** ou **Microsoft Edge** em suas versões mais recentes. |
 
 ---
 
-## 💪 Requisitos Recomendados
+## Requisitos Opcionais
 
-| Tipo | Especificação |
-|------|----------------|
-| Sistema Operacional | Windows 11 / Ubuntu 22.04 / macOS Ventura |
-| Processador | Intel Core i5 / Ryzen 5 |
-| Memória RAM | 8 GB ou mais |
-| Armazenamento | SSD com 10 GB livres |
-| Python | Versão 3.12+ |
-| VS Code | Última versão estável |
-| Navegador | Google Chrome / Edge / Firefox / Opera |
+Esses itens não são obrigatórios, mas **facilitam o desenvolvimento, testes e colaboração** durante o uso do sistema.
 
+| Ferramenta | Descrição |
+|-------------|------------|
+| **Visual Studio Code** | Editor de código utilizado no desenvolvimento do projeto. |
+| **Live Server (extensão do VS Code)** | Permite executar o projeto localmente no navegador. |
+| **Live Share (extensão do VS Code)** | Facilita o trabalho colaborativo em tempo real entre desenvolvedores. |
+
+---
+
+## Observações
+
+- Para melhor experiência, recomenda-se utilizar um navegador moderno e com JavaScript habilitado.
 
 ---

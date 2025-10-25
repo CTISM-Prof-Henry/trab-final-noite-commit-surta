@@ -1,75 +1,73 @@
-# 🧩 Tutorial de Instalação e Configuração do Ambiente
-
-Este guia mostra passo a passo como instalar tudo o que é necessário para rodar o projeto usando **VS Code** como ambiente de desenvolvimento.
+# Tutorial de Instalação e Execução do Sistema
 
 ---
 
-## 📦 1. Baixar os aplicativos necessários
+## Introdução
 
-### 🔹 1.1 Instalar o Python
+Este guia ensina passo a passo como **baixar, instalar e executar** o **Sistema de Agendamento de Salas** desenvolvido pela equipe **Commit&Surta**.  
+Mesmo que você nunca tenha usado **Git** ou **MkDocs**, basta seguir as instruções abaixo.
 
-1. Acesse: [https://www.python.org/downloads/](https://www.python.org/downloads/)
+---
 
-2. Baixe a versão **Python 3.10 ou superior**.
+## 1. Baixar o Projeto
 
-3. Durante a instalação, **marque a opção "Add Python to PATH"**.
+1. Acesse o repositório oficial do projeto:  
+   [https://github.com/CTISM-Prof-Henry/trab-final-noite-commit-surta](https://github.com/CTISM-Prof-Henry/trab-final-noite-commit-surta)
 
-4. Após instalar, verifique no terminal:
+2. Clique em **Code → Download ZIP**.
 
-   ```bash
-   python --version
+3. Extraia o arquivo `.zip` baixado. E abra a pasta após extraida.
 
-### 🔹 1.2 Instalar o Git
+---
 
-5. Acesse: https://git-scm.com/downloads
+4. Estrutura do Projeto.
 
-6. Instale normalmente (as opções padrão funcionam bem).
+Dentro da pasta principal, você encontrará algo como:
 
-7. Depois teste:
+trab-final-noite-commit-surta/
+│
+├── index.html
+├── script.js
+├── style.css
+│
+├── docs/
+│   ├── index.md
+│   ├── tutorial.md
+│   ├── requisitos.md
+│   ├── bibliotecas.md
+│   └── sobre.md
+│
+└── mkdocs.yml
 
-    git --version
+5. Executar o Sistema Localmente
 
-### 🔹 1.3 Instalar o VS Code
+O sistema é desenvolvido em HTML, CSS e JavaScript puro.
+Portanto, não é necessário instalar nenhum servidor, pacote ou dependência.
 
-8. Vá em https://code.visualstudio.com/
+### Executar Manualmente
 
-9. Baixe e instale a versão para seu sistema.
+    1. Localize o arquivo index.html na pasta principal.
+    2. Clique duas vezes sobre ele.
+    O navegador padrão do sistema abrirá o site automaticamente.
 
-10. Ao abrir o VS Code, instale as extensões recomendadas:
+### Executar pelo VS Code (opcional)
 
-    Python (by Microsoft)
-    Pylance
-    GitHub Pull Requests and Issues
-    (Opcional) Material Icon Theme
-    (Opcional) Markdown All in One
+Se estiver utilizando o Visual Studio Code, é possível usar a extensão Live Server para facilitar os testes locais:
 
-## 💾 2. Clonar o repositório do projeto
+ 1. Instale a extensão Live Server.
+ 2. Abra o projeto no VS Code.
+ 3. Clique com o botão direito sobre o arquivo index.html.
+ 4. Selecione “Open with Live Server”.
+    o navegador será aberto automaticamente exibindo o sistema.
 
-No VS Code:
-    Pressione Ctrl + Shift + P → procure por Git: Clone.
-    Cole o link do repositório:
-    
-            https://github.com/CTISM-Prof-Henry/trab-final-noite-commit-surta.git
+6. Conclusão
 
-    Escolha uma pasta local para salvar o projeto.
-    Ou, no terminal:
+Após seguir todos os passos:
 
-            git clone https://github.com/Rossini04/NOME_DO_REPOSITORIO.git
-            cd NOME_DO_REPOSITORIO
+O site abrirá normalmente no navegador.
+Professores poderão cadastrar, agendar e alterar reservas.
+Alunos poderão consultar horários e disponibilidade de salas.
+Você agora possui o Sistema de Agendamento de Salas (Commit&Surta) rodando localmente e pode alterar o código, visualizar a documentação e contribuir com melhorias no GitHub.
 
-## ⚙️ 3. Instalar as dependências do projeto
-
-    Isso instalará todas as bibliotecas necessárias listadas no arquivo requirements.txt.
-
-        pip install -r requirements.txt
-
-## 🧩 4. Rodar o MkDocs (para visualizar a documentação)
-
-Dentro da pasta raiz do projeto (onde está o mkdocs.yml):
-    mkdocs serve
-
-Abra o navegador e acesse:
-
-👉 http://127.0.0.1:8000
-
+> Caso o site não abra corretamente, verifique se todos os arquivos (index.html, style.css e script.js) estão na mesma pasta.
 

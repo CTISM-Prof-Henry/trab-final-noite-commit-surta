@@ -1,17 +1,47 @@
-# Welcome to MkDocs
+# Sistema de Agendamento
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Documentação oficial do projeto desenvolvido como parte do trabalho final da disciplina.
 
-## Commands
+---
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Introdução
 
-## Project layout
+Este site apresenta a documentação completa do **Sistema de Agendamento**, incluindo tutoriais de instalação, dependências, requisitos e instruções de uso.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+---
+
+## Seções da Documentação
+
+- [Tutorial de Instalação](tutorial.md)
+- [Requisitos do Sistema](requisitos.md)
+- [Bibliotecas e Dependências](bibliotecas.md)
+- [Sobre o Projeto](sobre.md)
+
+---
+
+## Objetivo
+
+O sistema foi criado para facilitar o processo de agendamento de salas e recursos, oferecendo uma interface simples e eficiente para alunos e professores.
+
+---
+
+## Tecnologias Utilizadas
+
+| Tecnologia | Função |
+|-------------|--------|
+| HTML | Estrutura do sistema |
+| CSS | Estilização e layout |
+| JavaScript | Lógica e interatividade |
+
+---
+
+## Observações
+
+Este projeto não utiliza **npm** nem **pip**.  
+Basta abrir o arquivo `index.html` no navegador para visualizar o sistema em funcionamento.
+
+---
+
+## Créditos
+
+Desenvolvido por estudantes do curso Técnico em Informática – CTISM/UFSM.
