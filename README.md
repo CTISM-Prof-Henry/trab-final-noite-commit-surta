@@ -5,10 +5,8 @@ Agendamento Politécnico
 
 ## Sumário
 * [Pré-requisitos](#pré-requisitos)
-* [Instalação](#instalação)
 * [Instruções de uso](#instruções-de-uso)
 * [Contato](#contato)
-* [Bibliografia](#bibliografia)
 
 ## Pré-requisitos
 
@@ -31,9 +29,7 @@ https://ctism-prof-henry.github.io/trab-final-noite-commit-surta/
 O repositório foi originalmente desenvolvido por Fulano: [fulano@ufsm.br]()
 Diretório desenvolvido por:
 
-
-https://ctism-prof-henry.github.io/trab-final-noite-commit-surta/
 * Anderson da silva rossini => anderson.silvarossini@gmail.com
 * Erick Posser Mathias => possermathiasb@gmail.com
 
-## Bibliografia
+
