@@ -15,11 +15,11 @@ https://ctism-prof-henry.github.io/trab-final-noite-commit-surta/
 
 ## Contato
 
-O repositório foi originalmente desenvolvido por Fulano: [fulano@ufsm.br]()
 Diretório desenvolvido por:
 
 * Anderson da silva rossini => anderson.silvarossini@gmail.com
 * Erick Posser Mathias => possermathiasb@gmail.com
+
 
 
 
