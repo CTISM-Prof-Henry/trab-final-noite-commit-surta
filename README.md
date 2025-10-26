@@ -4,19 +4,8 @@
 Agendamento Politécnico 
 
 ## Sumário
-* [Pré-requisitos](#pré-requisitos)
 * [Instruções de uso](#instruções-de-uso)
 * [Contato](#contato)
-
-## Pré-requisitos
-
-| Configuração        | Valor                    |
-|---------------------|--------------------------|
-| Sistema operacional | Windows 10 Pro (64 bits) |
-| Sistema operacional | Windows 10 (64 bits) |
-| Processador         | Intel core i7 9700       |
-| Memória RAM         | 16GB                     |
-| Necessita rede?     | Sim                      |
 
 ## Instruções de Uso
 
@@ -31,5 +20,6 @@ Diretório desenvolvido por:
 
 * Anderson da silva rossini => anderson.silvarossini@gmail.com
 * Erick Posser Mathias => possermathiasb@gmail.com
+
 
 
