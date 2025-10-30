@@ -1,0 +1,14 @@
+{
+  "name": "teste-site",
+  "version": "1.0.0",
+  "description": "Testes automatizados com QUnit",
+  "main": "script.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "qunit"
+  },
+  "devDependencies": {
+    "qunit": "^2.24.2",
+    "jsdom": "^24.0.0"
+  }
+}
