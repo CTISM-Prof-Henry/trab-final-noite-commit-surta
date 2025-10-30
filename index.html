@@ -114,6 +114,7 @@
                         <option>Bloco E</option>
                         <option>Bloco F</option>
                         <option>Bloco G</option>
+                        <option>Auditório</option>
                       </select>
                     </div>
 
@@ -137,6 +138,7 @@
                       <option selected disabled>Selecione</option>
                       <option>Laboratório</option>
                       <option>Sala de aula</option>
+                      <option>Auditório</option>
                     </select>
                   </div>
 
@@ -213,7 +215,16 @@
                         <option selected disabled></option>
                         <option>Laboratório</option>
                         <option>Sala de aula</option>
+                        <option>Auditório</option>
                       </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row mb-3">
+                    <div class="form-group col-md-4">
+                      <label class="form-label font-weight-bold">CAPACIDADE</label>
+                      <input type="number" class="form-control custom-input" id="capacidadeAgendamento" 
+                             placeholder="Número de pessoas" min="0" max="100">
                     </div>
                   </div>
 
@@ -230,24 +241,10 @@
 
                   <div class="form-row mb-3">
                     <div class="form-group col-md-6">
-                      <label class="form-label font-weight-bold">DIA DA SEMANA</label>
-                      <select id="diaSemanaAgendamento" class="form-control custom-input">
-                        <option selected disabled></option>
-                        <option>Segunda-feira</option>
-                        <option>Terça-feira</option>
-                        <option>Quarta-feira</option>
-                        <option>Quinta-feira</option>
-                        <option>Sexta-feira</option>
-                        <option>Sábado</option>
-                        <option>Domingo</option>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-md-3">
                       <label class="form-label font-weight-bold">HORA INICIAL</label>
                       <input type="time" class="form-control custom-input" id="horaInicialAgendamento">
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-6">
                       <label class="form-label font-weight-bold">HORA FINAL</label>
                       <input type="time" class="form-control custom-input" id="horaFinalAgendamento">
                     </div>
@@ -300,16 +297,33 @@
                 <div class="modal-body">
                   <!-- Filtros -->
                   <div class="form-row mb-4">
-                    <div class="form-group col-md-3">
-                      <select class="form-control">
-                        <option selected>Responsáveis</option>
-                        <option value="">Cassal</option>
-                        <option value="">Henry</option>
-                        <option value="">Rosiclei</option>
-                        <option value="">Alan Turing</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-3">
+                      <div class="form-group col-md-3">
+                        <select class="form-control" id="filtroBloco" onchange="filtrarCadastros()">
+                          <option value="">Todos os Blocos</option>
+                          <option value="Bloco A">Bloco A</option>
+                          <option value="Bloco B">Bloco B</option>
+                          <option value="Bloco C">Bloco C</option>
+                          <option value="Bloco D">Bloco D</option>
+                          <option value="Bloco E">Bloco E</option>
+                          <option value="Bloco F">Bloco F</option>
+                          <option value="Bloco G">Bloco G</option>
+                          <option value="Auditório">Auditório</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-3">
+                        <select class="form-control" id="filtroTipo" onchange="filtrarCadastros()">
+                          <option value="">Todos os Tipos</option>
+                          <option value="Laboratório">Laboratório</option>
+                          <option value="Sala de aula">Sala de aula</option>
+                          <option value="Auditório">Auditório</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-3">
+                        <input type="number" class="form-control" id="filtroCapacidade" 
+                               placeholder="Capacidade mínima" min="0" max="100"
+                               onchange="filtrarCadastros()">
+                      </div>
+                      <div class="form-group col-md-3">
                       <select id="blocos" class="form-control" onchange="atualizarSalas()">
                         <option selected disabled>Selecione</option>
                         <option>Bloco A</option>
@@ -342,37 +356,6 @@
                     </div>
                   </div>
 
-                  <!-- Cartões de Agendamento -->
-                  <div class="card mb-3">
-                    <div class="card-body d-flex">
-                      <div class="mr-3" style="width: 80px; height: 80px; background-color: #eee;"></div>
-                      <div>
-                        <h6 class="mb-1">SALA C4</h6>
-                        <p class="mb-1">TIPO: SALA DE AULA</p>
-                        <p class="mb-1">CAPACIDADE: 20</p>
-                        <p class="mb-1">BLOCO: C</p>
-                        <p class="text-muted small mb-2">CADASTRADA NO DIA 16/01/2023</p>
-                        <button class="btn btn-sm btn-primary mr-2">Editar cadastro</button>
-                        <button class="btn btn-sm btn-danger">Excluir cadastro</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-body d-flex">
-                      <div class="mr-3" style="width: 80px; height: 80px; background-color: #eee;"></div>
-                      <div>
-                        <h6 class="mb-1">SALA G15</h6>
-                        <p class="mb-1">TIPO: LABORATÓRIO</p>
-                        <p class="mb-1">CAPACIDADE: 25</p>
-                        <p class="mb-1">BLOCO: G</p>
-                        <p class="text-muted small mb-2">CADASTRADA NO DIA 06/07/2020</p>
-                        <button class="btn btn-sm btn-primary mr-2">Editar cadastro</button>
-                        <button class="btn btn-sm btn-danger">Excluir cadastro</button>
-                      </div>
-                    </div>
-                  </div>
-
                   <!-- Paginação -->
                   <nav class="d-flex justify-content-center">
                     <ul class="pagination pagination-sm">
@@ -401,11 +384,11 @@
       </div>
       <div class="modal fade" id="modaldois" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-          <div class="modal-content rounded shadow">
+          <div class="modal-content custom-modal">
 
             <!-- Cabeçalho -->
             <div class="modal-header bg-primary text-white">
-              <h5 class="modal-title">Visualizar Agendamentos</h5>
+              <h5 class="modal-title">MEUS AGENDAMENTOS</h5>
               <button type="button" class="close text-white" data-dismiss="modal" aria-label="Fechar">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -413,88 +396,52 @@
 
             <!-- Corpo -->
             <div class="modal-body">
-
               <!-- Filtros -->
-              <div class="row mb-4">
-                <div class="col-md-3">
-                  <select class="form-control">
-                    <option>Responsáveis</option>
-                    <option>João</option>
-                    <option>Maria</option>
+              <div class="form-row mb-4">
+                <div class="form-group col-md-4">
+                  <label class="form-label font-weight-bold">RESPONSÁVEL</label>
+                  <input type="text" id="filtroResponsavel" class="form-control custom-input" placeholder="Digite o nome do responsável">
+                </div>
+                <div class="form-group col-md-4">
+                  <label class="form-label font-weight-bold">BLOCO</label>
+                  <select id="filtroBlocoAgendamento" class="form-control custom-input">
+                    <option value="">Todos</option>
+                    <option>Bloco A</option>
+                    <option>Bloco B</option>
+                    <option>Bloco C</option>
+                    <option>Bloco D</option>
+                    <option>Bloco E</option>
+                    <option>Bloco F</option>
+                    <option>Bloco G</option>
                   </select>
                 </div>
-                <div class="col-md-3">
-                  <select class="form-control">
-                    <option>Bloco</option>
-                    <option>A</option>
-                    <option>B</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <select class="form-control">
-                    <option>Sala</option>
-                    <option>C4</option>
-                    <option>G15</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <select class="form-control">
-                    <option>Período</option>
-                    <option>Manhã</option>
-                    <option>Noite</option>
+                <div class="form-group col-md-4">
+                  <label class="form-label font-weight-bold">PERÍODO</label>
+                  <select id="filtroPeriodoAgendamento" class="form-control custom-input">
+                    <option value="">Todos</option>
+                    <option value="manha">Manhã (07:30 - 11:50)</option>
+                    <option value="tarde">Tarde (13:30 - 18:00)</option>
+                    <option value="noite">Noite (19:00 - 23:00)</option>
                   </select>
                 </div>
               </div>
 
               <!-- Grid de cards -->
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <div class="card text-center shadow-sm h-100">
-                    <div class="card-body">
-                      <i class="fa fa-door-closed" style="font-size:2rem; color:#0d2e6d;"></i>
-                      <h6 class="mt-2">SALA C4</h6>
-                      <p class="mb-1">TIPO: SALA DE AULA</p>
-                      <p class="mb-1">CAPACIDADE: 20</p>
-                      <p class="mb-1">BLOCO: C</p>
-                      <small class="text-secondary">AGENDADA EM 16/01/2023</small>
-                      <div class="mt-3">
-                        <button class="btn btn-primary btn-sm">Editar</button>
-                        <button class="btn btn-danger btn-sm">Excluir</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                  <div class="card text-center shadow-sm h-100">
-                    <div class="card-body">
-                      <i class="fa fa-desktop" style="font-size:2rem; color:#0d2e6d;"></i>
-                      <h6 class="mt-2">SALA G15</h6>
-                      <p class="mb-1">TIPO: LABORATÓRIO</p>
-                      <p class="mb-1">CAPACIDADE: 25</p>
-                      <p class="mb-1">BLOCO: G</p>
-                      <small class="text-secondary">AGENDADA EM 06/07/2020</small>
-                      <div class="mt-3">
-                        <button class="btn btn-primary btn-sm">Editar</button>
-                        <button class="btn btn-danger btn-sm">Excluir</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="row cards-container">
+                <!-- Cards serão inseridos aqui dinamicamente -->
               </div>
 
               <!-- Paginação -->
               <nav class="d-flex justify-content-center mt-4">
                 <ul class="pagination pagination-sm">
-                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <!-- Paginação será inserida dinamicamente -->
                 </ul>
               </nav>
             </div>
 
             <!-- Rodapé -->
-            <div class="modal-footer">
+            <div class="modal-footer justify-content-between">
+              <span class="text-muted small">Filtre os agendamentos usando os campos acima</span>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
           </div>
@@ -502,45 +449,9 @@
       </div>
 
 
-      <!-- Tabela -->
-      <h4 class="text-left mb-3">Últimos Agendamentos</h4>
+      <!-- Tabela Semanal -->
       <div class="table-responsive">
-        <table class="table table-bordered text-center tabela-custom">
-          <thead>
-            <tr>
-              <th>Sala</th>
-              <th>Data</th>
-              <th>Responsável</th>
-            </tr>
-          </thead>
-          <tbody id="tabela-agendamentos">
-            <tr>
-              <td>SALA C10</td>
-              <td>12/08/2025</td>
-              <td>028.422.523-25</td>
-            </tr>
-            <tr>
-              <td>SALA C10</td>
-              <td>13/08/2025</td>
-              <td>030.535.242-43</td>
-            </tr>
-            <tr>
-              <td>SALA C10</td>
-              <td>14/08/2025</td>
-              <td>123.424.154-12</td>
-            </tr>
-            <tr>
-              <td>SALA C10</td>
-              <td>15/08/2025</td>
-              <td>124.145.524-55</td>
-            </tr>
-            <tr>
-              <td>SALA C10</td>
-              <td>17/08/2025</td>
-              <td>678.980.567-89</td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- O conteúdo será preenchido dinamicamente pelo JavaScript -->
       </div>
     </main>
   </div>
