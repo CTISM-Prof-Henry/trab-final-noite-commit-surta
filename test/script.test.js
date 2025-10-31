@@ -5,7 +5,7 @@ QUnit.module("Testes de atualização de salas", hooks => {
   let dom, document;
 
   hooks.beforeEach(() => {
-    dom = new JSDOM(`<!DOCTYPE html><html><body>
+    dom = new JSDOM(`<!DOCTYPE html><html lang=""><body>
       <select id="bloco">
         <option value="Bloco C" selected>Bloco C</option>
       </select>
