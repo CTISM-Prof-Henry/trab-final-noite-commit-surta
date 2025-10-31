@@ -4,14 +4,6 @@ function cadastroSalas() {
   $('#modalum').modal('show');
 }
 
-function realizarAgendamento() {
-  $('#modalAgendamento').modal('show');
-}
-
-function consultarAgendamentos() {
-  $('#modaldois').modal('show');
-}
-
 function consultarCadastros() {
   $('#modaltres').modal('show');
   // Adicionar event listeners para os filtros do modal de cadastros
@@ -119,7 +111,7 @@ const salasPorBloco = {
   "Bloco E": ["E101", "E102", "E103"],
   "Bloco F": ["F101", "F102", "F201", "F202", "F203"],
   "Bloco G": ["G1", "G2", "G3"],
-  "Auditório": ["Auditório Principal"]
+  "Auditorio": ["Auditório Principal"]
 };
 
 // Arrays para armazenar as salas e agendamentos
@@ -166,7 +158,7 @@ function excluirSala(bloco, numeroSala) {
 // Função para cadastrar uma nova sala
 function cadastrarSala(event) {
   event.preventDefault();
-  
+
   const bloco = document.getElementById('bloco').value;
   const sala = document.getElementById('sala').value;
   const capacidade = parseInt(document.getElementById('capacidade').value);
@@ -208,7 +200,7 @@ function cadastrarSala(event) {
 
   alert('Sala cadastrada com sucesso!');
   $('#modalum').modal('hide');
-  
+
   // Limpa o formulário
   event.target.reset();
 }
@@ -218,11 +210,11 @@ function atualizarTipoSala(event) {
   const salaSelect = event.target;
   const blocoSelect = document.getElementById('blocoAgendamento');
   const tipoSelect = document.getElementById('tipoAgendamento');
-  
+
   const salaSelecionada = salasCadastradas.find(
     s => s.bloco === blocoSelect.value && s.sala === salaSelect.value
   );
-  
+
   if (salaSelecionada) {
     tipoSelect.value = salaSelecionada.tipo;
   }
@@ -230,7 +222,7 @@ function atualizarTipoSala(event) {
 
 function atualizarSalas(formulario = '') {
   let blocoSelect, salaSelect, tipoSelect;
-  
+
   if (formulario === 'Agendamento') {
     blocoSelect = document.getElementById('blocoAgendamento');
     salaSelect = document.getElementById('salaAgendamento');
@@ -260,7 +252,7 @@ function atualizarSalas(formulario = '') {
   if (formulario === 'Agendamento') {
     // Para agendamento, mostrar apenas salas cadastradas do bloco selecionado
     const salasDoBlocoCadastradas = salasCadastradas.filter(s => s.bloco === blocoSelecionado);
-    
+
     if (salasDoBlocoCadastradas.length === 0) {
       salaSelect.innerHTML = '<option disabled selected>Não há salas cadastradas neste bloco</option>';
       return;
@@ -312,7 +304,7 @@ function getDiaSemana(data) {
 
 function realizarAgendamento(event) {
   event.preventDefault();
-  
+
   const bloco = document.getElementById('blocoAgendamento').value;
   const sala = document.getElementById('salaAgendamento').value;
   const tipo = document.getElementById('tipoAgendamento').value;
@@ -348,7 +340,7 @@ function realizarAgendamento(event) {
     alert('Não é permitido fazer agendamentos aos domingos.');
     return;
   }
-  
+
   // Validação da capacidade do auditório
   if (bloco === 'Auditório' && capacidade > 100) {
     alert('A capacidade máxima do auditório é de 100 pessoas.');
@@ -356,9 +348,9 @@ function realizarAgendamento(event) {
   }
 
   // Verificar se há conflito de horário
-  const conflito = agendamentos.some(ag => 
-    ag.bloco === bloco && 
-    ag.sala === sala && 
+  const conflito = agendamentos.some(ag =>
+    ag.bloco === bloco &&
+    ag.sala === sala &&
     ag.diaSemana === diaSemana &&
     ((horaInicial >= ag.horaInicial && horaInicial < ag.horaFinal) ||
      (horaFinal > ag.horaInicial && horaFinal <= ag.horaFinal))
@@ -397,7 +389,7 @@ function atualizarTabelaSemanal() {
     '13:30', '14:20', '15:10', '16:20', '17:10', '18:00',  // Tarde
     '19:00', '19:50', '20:40', '21:30', '22:20', '23:00'   // Noite
   ];
-  
+
   let html = `
     <h4 class="text-left mb-3">Horários da Semana</h4>
     <div class="table-responsive">
@@ -427,9 +419,9 @@ function atualizarTabelaSemanal() {
 
         // Dia da semana abreviado para comparação
         const diaAbreviado = ag.diaSemana.substring(0, 3);
-        
-        return diaAbreviado === dia && 
-               minutoAtual >= minutoInicio && 
+
+        return diaAbreviado === dia &&
+               minutoAtual >= minutoInicio &&
                minutoAtual < minutoFim;
       });
 
@@ -464,7 +456,7 @@ function filtrarAgendamentos() {
   return agendamentos.filter(ag => {
     const matchResponsavel = ag.nome.toLowerCase().includes(responsavel);
     const matchBloco = !bloco || ag.bloco === bloco;
-    
+
     let matchPeriodo = true;
     if (periodo) {
       const hora = parseInt(ag.horaInicial.split(':')[0]);
@@ -480,7 +472,7 @@ function filtrarAgendamentos() {
 function atualizarCardAgendamentos() {
   const container = document.querySelector('#modaldois .cards-container');
   const agendamentosFiltrados = filtrarAgendamentos();
-  
+
   container.innerHTML = '';
 
   if (agendamentosFiltrados.length === 0) {
@@ -506,7 +498,7 @@ function atualizarCardAgendamentos() {
     card.className = 'col-md-6 mb-3';
     const dataFormatada = new Date(agendamento.dataInicial).toLocaleDateString('pt-BR');
     const dataFinalFormatada = new Date(agendamento.dataFinal).toLocaleDateString('pt-BR');
-    
+
     let statusClass = 'bg-info';
     let statusText = 'AGENDADO';
     const hoje = new Date();
@@ -525,8 +517,8 @@ function atualizarCardAgendamentos() {
         <div class="card-body">
           <div class="d-flex align-items-center mb-3">
             <i class="fa ${
-              agendamento.tipo === 'Laboratório' ? 'fa-desktop' : 
-              agendamento.tipo === 'Auditório' ? 'fa-theater-masks' : 
+              agendamento.tipo === 'Laboratório' ? 'fa-desktop' :
+              agendamento.tipo === 'Auditório' ? 'fa-theater-masks' :
               'fa-door-closed'
             }" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
             <div class="text-left">
@@ -534,7 +526,7 @@ function atualizarCardAgendamentos() {
               <small class="text-muted">Responsável: ${agendamento.nome}</small>
             </div>
           </div>
-          
+
           <div class="row text-left">
             <div class="col-12">
               <p class="mb-1"><i class="far fa-calendar-alt mr-2"></i>De: ${dataFormatada} até ${dataFinalFormatada}</p>
@@ -553,14 +545,14 @@ function atualizarCardAgendamentos() {
         </div>
       </div>
     `;
-    
+
     container.appendChild(card);
   });
 }
 
 function consultarAgendamentos() {
   $('#modaldois').modal('show');
-  
+
   // Adicionar event listeners para os filtros
   document.getElementById('filtroResponsavel').addEventListener('input', atualizarCardAgendamentos);
   document.getElementById('filtroBlocoAgendamento').addEventListener('change', atualizarCardAgendamentos);
@@ -574,7 +566,7 @@ function consultarAgendamentos() {
     card.className = 'col-md-6 mb-3';
     const dataFormatada = new Date(agendamento.dataInicial).toLocaleDateString('pt-BR');
     const dataFinalFormatada = new Date(agendamento.dataFinal).toLocaleDateString('pt-BR');
-    
+
     let statusClass = 'bg-info';
     let statusText = 'AGENDADO';
     const hoje = new Date();
@@ -593,8 +585,8 @@ function consultarAgendamentos() {
         <div class="card-body">
           <div class="d-flex align-items-center mb-3">
             <i class="fa ${
-              agendamento.tipo === 'Laboratório' ? 'fa-desktop' : 
-              agendamento.tipo === 'Auditório' ? 'fa-theater-masks' : 
+              agendamento.tipo === 'Laboratório' ? 'fa-desktop' :
+              agendamento.tipo === 'Auditório' ? 'fa-theater-masks' :
               'fa-door-closed'
             }" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
             <div class="text-left">
@@ -602,7 +594,7 @@ function consultarAgendamentos() {
               <small class="text-muted">Responsável: ${agendamento.nome}</small>
             </div>
           </div>
-          
+
           <div class="row text-left">
             <div class="col-12">
               <p class="mb-1"><i class="far fa-calendar-alt mr-2"></i>De: ${dataFormatada} até ${dataFinalFormatada}</p>
@@ -627,9 +619,9 @@ function consultarAgendamentos() {
 
 function excluirAgendamento(dataAgendamento, sala, horaInicial) {
   if (confirm('Tem certeza que deseja excluir este agendamento?')) {
-    agendamentos = agendamentos.filter(ag => 
-      !(ag.dataAgendamento === dataAgendamento && 
-        ag.sala === sala && 
+    agendamentos = agendamentos.filter(ag =>
+      !(ag.dataAgendamento === dataAgendamento &&
+        ag.sala === sala &&
         ag.horaInicial === horaInicial)
     );
     salvarAgendamentos();
