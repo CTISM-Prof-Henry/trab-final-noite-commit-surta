@@ -1,7 +1,10 @@
 
-// Abrir modais
 function cadastroSalas() {
   $('#modalum').modal('show');
+}
+
+function abrirModalAgendamento() {
+  $('#modalAgendamento').modal('show');
 }
 
 function consultarCadastros() {
@@ -73,7 +76,6 @@ function atualizarListaCadastros() {
             <i class="fa ${sala.tipo === 'Laboratório' ? 'fa-desktop' : sala.tipo === 'Auditório' ? 'fa-theater-masks' : 'fa-door-closed'}" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
             <div class="text-left">
               <h6 class="mb-0">${sala.tipo}</h6>
-              <small class="text-muted">Responsável: ${sala.nome || '—'}</small>
             </div>
           </div>
           <div class="row text-left">
@@ -84,8 +86,7 @@ function atualizarListaCadastros() {
           </div>
         </div>
         <div class="card-footer bg-light">
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="text-muted">CPF: ${sala.cpf || '—'}</small>
+          <div class="d-flex justify-content-end">
             <button class="btn btn-outline-danger btn-sm" onclick="excluirSala('${sala.bloco}', '${sala.sala}')">
               <i class="fas fa-trash-alt mr-1"></i>Excluir
             </button>
@@ -118,7 +119,6 @@ const salasPorBloco = {
 let salasCadastradas = [];
 let agendamentos = [];
 
-// Função para carregar dados do localStorage
 function carregarSalasCadastradas() {
   const salasJSON = localStorage.getItem('salasCadastradas');
   if (salasJSON) {
@@ -126,12 +126,10 @@ function carregarSalasCadastradas() {
   }
 }
 
-// Função para salvar salas no localStorage
 function salvarSalasCadastradas() {
   localStorage.setItem('salasCadastradas', JSON.stringify(salasCadastradas));
 }
 
-// Função para carregar agendamentos do localStorage
 function carregarAgendamentos() {
   const agendamentosJSON = localStorage.getItem('agendamentos');
   if (agendamentosJSON) {
@@ -139,7 +137,6 @@ function carregarAgendamentos() {
   }
 }
 
-// Função para salvar agendamentos no localStorage
 function salvarAgendamentos() {
   localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
 }
@@ -163,8 +160,6 @@ function cadastrarSala(event) {
   const sala = document.getElementById('sala').value;
   const capacidade = parseInt(document.getElementById('capacidade').value);
   const tipo = document.getElementById('tipo').value;
-  const cpf = document.getElementById('cpfResponsavel').value;
-  const nome = document.getElementById('nomeResponsavel').value;
 
   // Verifica se a sala já está cadastrada
   const salaCadastrada = salasCadastradas.find(s => s.bloco === bloco && s.sala === sala);
@@ -190,8 +185,6 @@ function cadastrarSala(event) {
     sala,
     capacidade,
     tipo: bloco === 'Auditório' ? 'Auditório' : tipo,
-    cpf,
-    nome,
     dataCadastro: new Date().toLocaleDateString()
   });
 
@@ -292,17 +285,12 @@ function atualizarSalas(formulario = '') {
     });
   }
 }
-// Exportar para teste
-
-// Adiciona o event listener quando o documento estiver pronto
-// Função para realizar agendamento
 function getDiaSemana(data) {
   const dias = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
   const date = new Date(data);
   return dias[date.getDay()];
 }
-
-function realizarAgendamento(event) {
+const realizarAgendamento = function(event) {
   event.preventDefault();
 
   const bloco = document.getElementById('blocoAgendamento').value;
@@ -314,6 +302,7 @@ function realizarAgendamento(event) {
   const horaFinal = document.getElementById('horaFinalAgendamento').value;
   const cpf = document.getElementById('cpfAgendamento').value;
   const nome = document.getElementById('nomeAgendamento').value;
+  const disciplina = document.getElementById('disciplinaAgendamento').value;
   const capacidade = parseInt(document.getElementById('capacidadeAgendamento').value) || 0;
 
   // Validação da data
@@ -373,6 +362,7 @@ function realizarAgendamento(event) {
     horaFinal,
     cpf,
     nome,
+    disciplina,
     dataAgendamento: new Date().toLocaleDateString()
   });
 
@@ -382,6 +372,18 @@ function realizarAgendamento(event) {
   atualizarTabelaSemanal();
 }
 
+// Função para gerar uma cor aleatória suave
+function gerarCorAleatoria() {
+  // Gera componentes HSL - Hue (matiz), Saturation (saturação), Lightness (luminosidade)
+  const hue = Math.floor(Math.random() * 360); // Qualquer matiz
+  const saturation = 60 + Math.floor(Math.random() * 20); // Saturação entre 60-80%
+  const lightness = 45 + Math.floor(Math.random() * 10); // Luminosidade entre 45-55%
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`; // Retorna cor em formato HSL
+}
+
+// Mapa para manter as cores consistentes para cada agendamento
+const coresAgendamentos = new Map();
+
 function atualizarTabelaSemanal() {
   const diasSemana = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
   const horarios = [
@@ -390,11 +392,12 @@ function atualizarTabelaSemanal() {
     '19:00', '19:50', '20:40', '21:30', '22:20', '23:00'   // Noite
   ];
 
+  // Limpar o mapa de cores para novos agendamentos
+  coresAgendamentos.clear();
+
   let html = `
-    <h4 class="text-left mb-3">Horários da Semana</h4>
-    <div class="table-responsive">
-      <table class="table table-sm table-bordered text-center tabela-custom">
-        <thead>
+    <table class="table table-sm table-bordered text-center tabela-custom">
+      <thead>
           <tr class="bg-light">
             <th style="width: 80px;">Horário</th>
             ${diasSemana.map(dia => `<th style="width: 16.66%">${dia}</th>`).join('')}
@@ -427,9 +430,17 @@ function atualizarTabelaSemanal() {
 
       if (agendamentosHorario.length > 0) {
         const ag = agendamentosHorario[0];
-        html += `<td class="bg-info text-white small p-1" style="font-size: 0.8rem;">
+        
+        // Gerar ou recuperar cor para este agendamento
+        const chaveAgendamento = `${ag.bloco}-${ag.sala}-${ag.horaInicial}-${ag.diaSemana}`;
+        if (!coresAgendamentos.has(chaveAgendamento)) {
+          coresAgendamentos.set(chaveAgendamento, gerarCorAleatoria());
+        }
+        const corAgendamento = coresAgendamentos.get(chaveAgendamento);
+        
+        html += `<td class="text-white small p-1" style="font-size: 0.8rem; background-color: ${corAgendamento}">
           ${ag.bloco}-${ag.sala}<br>
-          <span style="font-size: 0.7rem;">${ag.nome}</span>
+          <span style="font-size: 0.7rem;">${ag.disciplina || ag.nome}</span>
         </td>`;
       } else {
         html += '<td class="p-1"></td>';
@@ -448,6 +459,18 @@ function atualizarTabelaSemanal() {
   container.innerHTML = html;
 }
 
+function verificarPeriodo(horaInicial, periodo) {
+  if (!periodo) return true;
+  
+  const hora = parseInt(horaInicial.split(':')[0]);
+  switch(periodo) {
+    case 'manha': return hora >= 7 && hora <= 11;
+    case 'tarde': return hora >= 13 && hora <= 17;
+    case 'noite': return hora >= 19 && hora <= 22;
+    default: return true;
+  }
+}
+
 function filtrarAgendamentos() {
   const responsavel = document.getElementById('filtroResponsavel').value.toLowerCase();
   const bloco = document.getElementById('filtroBlocoAgendamento').value;
@@ -456,17 +479,65 @@ function filtrarAgendamentos() {
   return agendamentos.filter(ag => {
     const matchResponsavel = ag.nome.toLowerCase().includes(responsavel);
     const matchBloco = !bloco || ag.bloco === bloco;
-
-    let matchPeriodo = true;
-    if (periodo) {
-      const hora = parseInt(ag.horaInicial.split(':')[0]);
-      if (periodo === 'manha' && (hora < 7 || hora > 11)) matchPeriodo = false;
-      if (periodo === 'tarde' && (hora < 13 || hora > 17)) matchPeriodo = false;
-      if (periodo === 'noite' && (hora < 19 || hora > 22)) matchPeriodo = false;
-    }
+    const matchPeriodo = verificarPeriodo(ag.horaInicial, periodo);
 
     return matchResponsavel && matchBloco && matchPeriodo;
   });
+}
+
+function criarCardAgendamento(agendamento) {
+  const card = document.createElement('div');
+  card.className = 'col-md-6 mb-3';
+  
+  const dataFormatada = new Date(agendamento.dataInicial).toLocaleDateString('pt-BR');
+  const dataFinalFormatada = new Date(agendamento.dataFinal).toLocaleDateString('pt-BR');
+  
+  const hoje = new Date();
+  const dataAgendamento = new Date(agendamento.dataInicial);
+  const statusClass = dataAgendamento < hoje ? 'bg-secondary' : 'bg-info';
+  const statusText = dataAgendamento < hoje ? 'CONCLUÍDO' : 'AGENDADO';
+
+  const iconeClasse = {
+    'Laboratório': 'fa-desktop',
+    'Auditório': 'fa-theater-masks'
+  }[agendamento.tipo] || 'fa-door-closed';
+
+  card.innerHTML = `
+    <div class="card shadow-sm h-100">
+      <div class="card-header ${statusClass} text-white d-flex justify-content-between align-items-center">
+        <h6 class="mb-0">${agendamento.bloco} - ${agendamento.sala}</h6>
+        <span class="badge badge-light">${statusText}</span>
+      </div>
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-3">
+          <i class="fa ${iconeClasse}" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
+          <div class="text-left">
+            <h6 class="mb-0">${agendamento.tipo}</h6>
+            <small class="text-muted">Responsável: ${agendamento.nome}</small>
+          </div>
+        </div>
+
+        <div class="row text-left">
+          <div class="col-12">
+            <p class="mb-1"><i class="far fa-calendar-alt mr-2"></i>De: ${dataFormatada} até ${dataFinalFormatada}</p>
+            <p class="mb-1"><i class="far fa-clock mr-2"></i>Horário: ${agendamento.horaInicial} - ${agendamento.horaFinal}</p>
+            <p class="mb-1"><i class="fas fa-book mr-2"></i>Disciplina: ${agendamento.disciplina}</p>
+            <p class="mb-0"><i class="far fa-id-card mr-2"></i>CPF: ${agendamento.cpf}</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+          <small class="text-muted">Agendado em ${agendamento.dataAgendamento}</small>
+          <button class="btn btn-outline-danger btn-sm" onclick="excluirAgendamento('${agendamento.dataAgendamento}', '${agendamento.sala}', '${agendamento.horaInicial}')">
+            <i class="fas fa-trash-alt mr-1"></i>Excluir
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  return card;
 }
 
 function atualizarCardAgendamentos() {
@@ -494,59 +565,7 @@ function atualizarCardAgendamentos() {
   });
 
   agendamentosOrdenados.forEach(agendamento => {
-    const card = document.createElement('div');
-    card.className = 'col-md-6 mb-3';
-    const dataFormatada = new Date(agendamento.dataInicial).toLocaleDateString('pt-BR');
-    const dataFinalFormatada = new Date(agendamento.dataFinal).toLocaleDateString('pt-BR');
-
-    let statusClass = 'bg-info';
-    let statusText = 'AGENDADO';
-    const hoje = new Date();
-    const dataAgendamento = new Date(agendamento.dataInicial);
-    if (dataAgendamento < hoje) {
-      statusClass = 'bg-secondary';
-      statusText = 'CONCLUÍDO';
-    }
-
-    card.innerHTML = `
-      <div class="card shadow-sm h-100">
-        <div class="card-header ${statusClass} text-white d-flex justify-content-between align-items-center">
-          <h6 class="mb-0">${agendamento.bloco} - ${agendamento.sala}</h6>
-          <span class="badge badge-light">${statusText}</span>
-        </div>
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-3">
-            <i class="fa ${
-              agendamento.tipo === 'Laboratório' ? 'fa-desktop' :
-              agendamento.tipo === 'Auditório' ? 'fa-theater-masks' :
-              'fa-door-closed'
-            }" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
-            <div class="text-left">
-              <h6 class="mb-0">${agendamento.tipo}</h6>
-              <small class="text-muted">Responsável: ${agendamento.nome}</small>
-            </div>
-          </div>
-
-          <div class="row text-left">
-            <div class="col-12">
-              <p class="mb-1"><i class="far fa-calendar-alt mr-2"></i>De: ${dataFormatada} até ${dataFinalFormatada}</p>
-              <p class="mb-1"><i class="far fa-clock mr-2"></i>Horário: ${agendamento.horaInicial} - ${agendamento.horaFinal}</p>
-              <p class="mb-0"><i class="far fa-id-card mr-2"></i>CPF: ${agendamento.cpf}</p>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer bg-light">
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="text-muted">Agendado em ${agendamento.dataAgendamento}</small>
-            <button class="btn btn-outline-danger btn-sm" onclick="excluirAgendamento('${agendamento.dataAgendamento}', '${agendamento.sala}', '${agendamento.horaInicial}')">
-              <i class="fas fa-trash-alt mr-1"></i>Excluir
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-
-    container.appendChild(card);
+    container.appendChild(criarCardAgendamento(agendamento));
   });
 }
 
@@ -560,61 +579,6 @@ function consultarAgendamentos() {
 
   // Mostrar agendamentos iniciais
   atualizarCardAgendamentos();
-
-  agendamentosOrdenados.forEach(agendamento => {
-    const card = document.createElement('div');
-    card.className = 'col-md-6 mb-3';
-    const dataFormatada = new Date(agendamento.dataInicial).toLocaleDateString('pt-BR');
-    const dataFinalFormatada = new Date(agendamento.dataFinal).toLocaleDateString('pt-BR');
-
-    let statusClass = 'bg-info';
-    let statusText = 'AGENDADO';
-    const hoje = new Date();
-    const dataAgendamento = new Date(agendamento.dataInicial);
-    if (dataAgendamento < hoje) {
-      statusClass = 'bg-secondary';
-      statusText = 'CONCLUÍDO';
-    }
-
-    card.innerHTML = `
-      <div class="card shadow-sm h-100">
-        <div class="card-header ${statusClass} text-white d-flex justify-content-between align-items-center">
-          <h6 class="mb-0">${agendamento.bloco} - ${agendamento.sala}</h6>
-          <span class="badge badge-light">${statusText}</span>
-        </div>
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-3">
-            <i class="fa ${
-              agendamento.tipo === 'Laboratório' ? 'fa-desktop' :
-              agendamento.tipo === 'Auditório' ? 'fa-theater-masks' :
-              'fa-door-closed'
-            }" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
-            <div class="text-left">
-              <h6 class="mb-0">${agendamento.tipo}</h6>
-              <small class="text-muted">Responsável: ${agendamento.nome}</small>
-            </div>
-          </div>
-
-          <div class="row text-left">
-            <div class="col-12">
-              <p class="mb-1"><i class="far fa-calendar-alt mr-2"></i>De: ${dataFormatada} até ${dataFinalFormatada}</p>
-              <p class="mb-1"><i class="far fa-clock mr-2"></i>Horário: ${agendamento.horaInicial} - ${agendamento.horaFinal}</p>
-              <p class="mb-0"><i class="far fa-id-card mr-2"></i>CPF: ${agendamento.cpf}</p>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer bg-light">
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="text-muted">Agendado em ${agendamento.dataAgendamento}</small>
-            <button class="btn btn-outline-danger btn-sm" onclick="excluirAgendamento('${agendamento.dataAgendamento}', '${agendamento.sala}', '${agendamento.horaInicial}')">
-              <i class="fas fa-trash-alt mr-1"></i>Excluir
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-    container.appendChild(card);
-  });
 }
 
 function excluirAgendamento(dataAgendamento, sala, horaInicial) {
@@ -630,14 +594,22 @@ function excluirAgendamento(dataAgendamento, sala, horaInicial) {
   }
 }
 
+// Carregar dados e inicializar a aplicação quando o documento estiver pronto
 document.addEventListener('DOMContentLoaded', function() {
-  // Formulário de cadastro de salas
+  // Carregar dados salvos
+  carregarSalasCadastradas();
+  carregarAgendamentos();
+
+  // Configurar formulário de cadastro de salas
   const formCadastro = document.querySelector('#modalum form');
   if (formCadastro) {
-    formCadastro.addEventListener('submit', cadastrarSala);
+    formCadastro.addEventListener('submit', function(e) {
+      e.preventDefault();
+      cadastrarSala(e);
+    });
   }
 
-  // Formulário de agendamento
+  // Configurar formulário de agendamento
   const formAgendamento = document.querySelector('#modalAgendamento form');
   if (formAgendamento) {
     formAgendamento.addEventListener('submit', realizarAgendamento);
@@ -645,9 +617,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Inicializar a tabela semanal
   atualizarTabelaSemanal();
+
+  // Configurar evento para atualização dos tipos de sala
+  const salaAgendamentoSelect = document.getElementById('salaAgendamento');
+  if (salaAgendamentoSelect) {
+    salaAgendamentoSelect.addEventListener('change', atualizarTipoSala);
+  }
 });
 
 if (typeof module !== "undefined") {
-  module.exports = { atualizarSalas, salasPorBloco, salasCadastradas };
+  module.exports = {
+    // Funções de UI
+    atualizarSalas,
+    atualizarTabelaSemanal,
+    atualizarListaCadastros,
+    atualizarCardAgendamentos,
+    // Funções de manipulação de dados
+    realizarAgendamento,
+    cadastrarSala,
+    // Funções utilitárias
+    verificarPeriodo,
+    getDiaSemana,
+    // Dados
+    salasPorBloco,
+    salasCadastradas
+  };
 }
 
