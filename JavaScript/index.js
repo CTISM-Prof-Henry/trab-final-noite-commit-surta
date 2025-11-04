@@ -1,15 +1,35 @@
 
+/*
+  JavaScript de Agendamento e Cadastro de Salas
+
+  Este arquivo implementa a lógica de um sistema simples de cadastro de
+  salas e agendamento de uso semanal. Os dados são mantidos em memória
+  durante a sessão e também persistidos em localStorage nas chaves:
+    - 'salasCadastradas' : Array de objetos { bloco, sala, capacidade, tipo, dataCadastro }
+    - 'agendamentos'     : Array de objetos { bloco, sala, tipo, dataInicial, dataFinal,
+                                             diaSemana, horaInicial, horaFinal, cpf, nome,
+                                             disciplina, dataAgendamento }
+  Casos importantes cobertos por validações:
+    - Não permitir agendamento para o dia atual ou datas passadas.
+    - Não permitir agendamento aos domingos.
+    - Verificar conflito de horário por sala/dia.
+    - Limitar capacidade do auditório a 100
+*/
+
 function cadastroSalas() {
+  // Abre o modal de cadastro (usa jQuery/bootstrap modal). Apenas UI, sem lógica.
   $('#modalum').modal('show');
 }
 
 function abrirModalAgendamento() {
+  // Abre o modal de agendamento
   $('#modalAgendamento').modal('show');
 }
 
 function consultarCadastros() {
+  // Abre o modal que lista os cadastros e vincula os listeners de filtro.
+  // Entrada: nenhum parâmetro. Efeito: atualiza DOM do modal.
   $('#modaltres').modal('show');
-  // Adicionar event listeners para os filtros do modal de cadastros
   const filtroBlocoEl = document.getElementById('filtroBloco');
   const filtroTipoEl = document.getElementById('filtroTipo');
   const filtroCapEl = document.getElementById('filtroCapacidade');
@@ -61,7 +81,7 @@ function atualizarListaCadastros() {
     return;
   }
 
-  // Criar cartões com mesma estética dos agendamentos
+  // Criar cards para cada sala filtrada
   salasFiltradas.forEach(sala => {
     const col = document.createElement('div');
     col.className = 'col-md-6 mb-3';
@@ -98,10 +118,27 @@ function atualizarListaCadastros() {
   });
 }
 
-// Função para filtrar cadastros (chamada quando os filtros são alterados)
+/*
+  filtrarCadastros
+
+  Função simples que serve como bridge quando os inputs de filtro mudam.
+  Entrada: nenhum valor. Efeito: renderiza a lista de cadastros no modal.
+*/
 function filtrarCadastros() {
   atualizarListaCadastros();
 }
+
+/* Persistência (localStorage)
+
+   As funções abaixo leem e escrevem os arrays `salasCadastradas` e `agendamentos`
+   no localStorage. Elas são pequenas mas críticas: qualquer mudança no formato
+   dos objetos exige migração ou limpeza do localStorage.
+
+  - carregarSalasCadastradas(): atualiza `salasCadastradas` (efeito colateral)
+  - salvarSalasCadastradas(): escreve `salasCadastradas` no localStorage
+  - carregarAgendamentos(): atualiza `agendamentos` (efeito colateral)
+  - salvarAgendamentos(): escreve `agendamentos` no localStorage
+*/
 
 // Lista de todas as salas possíveis por bloco
 const salasPorBloco = {
@@ -198,6 +235,19 @@ function cadastrarSala(event) {
   event.target.reset();
 }
 
+/*
+  Observações sobre cadastro e exclusão de salas:
+    - excluirSala(bloco, numeroSala): remove do array e persiste. Retorna alert
+      para o usuário. Não verifica dependências (por exemplo, agendamentos
+      existentes para a sala). Uma melhoria futura seria bloquear a exclusão
+      se houver agendamentos ativos.
+
+    - cadastrarSala(event): valida duplicidade, aplica regra do auditório e
+      persiste. Caso o bloco seja 'Auditório', força o tipo e valida capacidade.
+      Entrada: evento do formulário. Saída: modifica `salasCadastradas` e
+      localStorage; altera DOM (fecha modal) e mostra alertas.
+*/
+
 // Função para atualizar o tipo da sala quando selecionada
 function atualizarTipoSala(event) {
   const salaSelect = event.target;
@@ -285,11 +335,45 @@ function atualizarSalas(formulario = '') {
     });
   }
 }
+
+/*
+  atualizarTipoSala(event)
+ 
+  Atualiza o campo de tipo no formulário de agendamento quando uma sala
+  cadastrada é selecionada. Entrada: evento de change no select de sala.
+  Efeito: altera o valor de #tipoAgendamento (DOM). Não altera dados.
+
+  atualizarSalas(formulario)
+ -
+  Preenche o select de salas dependendo do bloco selecionado. Se `formulario`
+  for 'Agendamento' usa as salas cadastradas; caso contrário, usa a lista
+  estática `salasPorBloco` para cadastro. Garante também que, para Auditório,
+  o campo tipo seja forçado.
+*/
+/* getDiaSemana(data)
+
+   Entrada: string ou Date aceitável pelo construtor Date.
+   Saída: string com o nome do dia da semana em português.
+   Uso: função auxiliar para validar domingo e rotular agendamentos.
+*/
 function getDiaSemana(data) {
   const dias = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
   const date = new Date(data);
   return dias[date.getDay()];
 }
+
+/* realizarAgendamento(event)
+ 
+     - Entrada: evento de submit de formulário (objeto com preventDefault()).
+     - Saída: adiciona um objeto ao array `agendamentos` e persiste no localStorage
+       quando válido. Também atualiza UI (fecha modal e re-renderiza tabela).
+     - Erros/Validações: mostra alert e aborta em caso de data inválida, domingo,
+       conflito de horário ou excesso de capacidade para auditório.
+
+   Formato do objeto de agendamento (armazenado em `agendamentos`):
+     { bloco, sala, tipo, dataInicial, dataFinal, diaSemana,
+       horaInicial, horaFinal, cpf, nome, disciplina, dataAgendamento }
+*/
 const realizarAgendamento = function(event) {
   event.preventDefault();
 
@@ -570,14 +654,15 @@ function atualizarCardAgendamentos() {
 }
 
 function consultarAgendamentos() {
+  // Mostra modal de consulta e conecta filtros aos handlers que atualizam os cards.
+  // Nota: os handlers chamam `atualizarCardAgendamentos()` que renderiza o conteúdo
+  // com base no array `agendamentos` já persistido.
   $('#modaldois').modal('show');
 
-  // Adicionar event listeners para os filtros
   document.getElementById('filtroResponsavel').addEventListener('input', atualizarCardAgendamentos);
   document.getElementById('filtroBlocoAgendamento').addEventListener('change', atualizarCardAgendamentos);
   document.getElementById('filtroPeriodoAgendamento').addEventListener('change', atualizarCardAgendamentos);
 
-  // Mostrar agendamentos iniciais
   atualizarCardAgendamentos();
 }
 
