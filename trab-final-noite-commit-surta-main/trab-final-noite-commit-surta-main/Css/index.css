@@ -1,0 +1,128 @@
+body {
+  background: #f4f6fa;
+}
+
+.banner {
+  width: 100%;
+  height: 220px;
+  background: url('../Imgs/img-principal.png') center/cover no-repeat;
+}
+
+.header-custom {
+  background-color: rgba(33, 55, 107, 1) !important;
+}
+
+.header-custom,
+.header-custom * {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+.header-custom hr {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.rounded-form .input-group {
+  border-radius: 25px;
+  overflow: hidden;
+  background: #fff;
+  /* fundo branco da barra */
+}
+
+.rounded-form .form-control {
+  border: none;
+  box-shadow: none;
+  height: 35px;
+  font-size: 14px;
+}
+
+.btn-transparent {
+  border: none !important;
+  color: #555;
+  /* cor da lupa (use #fff se quiser branco sobre fundo escuro) */
+  padding: 0 12px;
+}
+
+.linha {
+  border: none;
+  border-top: 1px solid #fff;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1140px;
+  width: 100%;
+  padding: 0;
+}
+
+.navbar {
+  margin: 0 !important;
+  padding-top: 0.2rem !important;
+  padding-bottom: 0.2rem !important;
+}
+
+
+
+.custom-modal {
+    border-radius: 10px;
+    border: none;
+    background: #fff;
+  }
+
+  .custom-header {
+    background-color: #1e3a70;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    justify-content: space-between;
+  }
+
+  .custom-close {
+    background: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    opacity: 1 !important;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .custom-close span {
+    color: black;
+    font-weight: bold;
+  }
+
+  .form-label {
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  .custom-input {
+    background-color: #d9d9d9;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+  }
+
+  .custom-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #1e3a70;
+  }
+
+  .custom-btn {
+    background-color: #1e3a70;
+    color: white;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 10px 25px;
+    border: none;
+  }
+
+  .custom-btn:hover {
+    background-color: #162a50;
+  }
+
+  .modal-footer .btn-link {
+    font-weight: 600;
+  }
