@@ -1,0 +1,43 @@
+/* Fundo geral */
+.md-main {
+  background-color: #f4f6fa;
+}
+
+/* Cabeçalho azul UFSM */
+.md-header {
+  background-color: #002f6c;
+  color: white;
+}
+
+/* Botões parecidos com o site */
+a.md-button {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 16px;
+  transition: all 0.3s;
+}
+
+a.md-button--primary {
+  background-color: #1565c0;
+  color: white;
+}
+
+a.md-button--primary:hover {
+  background-color: #0d47a1;
+}
+
+/* Tabelas e blocos */
+table {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #e3f2fd;
+}
+
+code {
+  background-color: #e0f7fa;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
