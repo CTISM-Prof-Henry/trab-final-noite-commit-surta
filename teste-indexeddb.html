@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Teste IndexedDB - Agendamento Politécnico</title>
+    <style>
+        .codeblock {
+            display: block;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .status-ready {
+            color: green;
+            font-weight: bold;
+        }
+        .status-not-ready {
+            color: red;
+            font-weight: bold;
+        }
+        .card-header {
+            background-color: #0d2e6d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1><i class="fas fa-database mr-2"></i>Teste de IndexedDB</h1>
+            <p class="lead">Sistema de Agendamento de Salas - Colégio Politécnico da UFSM</p>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="alert alert-info">
+                <strong>Status do Banco:</strong>
+                <span id="dbStatus" class="status-not-ready">Aguardando...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-door-open mr-2"></i>Salas Cadastradas</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>Total:</strong> <span id="totalSalas">0</span> salas
+                    </div>
+                    <code id="listaSalas" class="codeblock">Carregando...</code>
+                    <button class="btn btn-primary btn-sm mt-2" onclick="atualizarVisualizacao()">
+                        <i class="fas fa-sync-alt mr-1"></i>Atualizar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-calendar-alt mr-2"></i>Agendamentos</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>Total:</strong> <span id="totalAgendamentos">0</span> agendamentos
+                    </div>
+                    <code id="listaAgendamentos" class="codeblock">Carregando...</code>
+                    <button class="btn btn-primary btn-sm mt-2" onclick="atualizarVisualizacao()">
+                        <i class="fas fa-sync-alt mr-1"></i>Atualizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-tools mr-2"></i>Operações</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-2">
+                            <button class="btn btn-success btn-block" onclick="migrarLocalStorageParaIndexedDB()">
+                                <i class="fas fa-exchange-alt mr-1"></i>Migrar localStorage → IndexedDB
+                            </button>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <button class="btn btn-warning btn-block" onclick="exportarDados()">
+                                <i class="fas fa-download mr-1"></i>Exportar Dados (JSON)
+                            </button>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <button class="btn btn-danger btn-block" onclick="limparIndexedDB()">
+                                <i class="fas fa-trash-alt mr-1"></i>Limpar IndexedDB
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-terminal mr-2"></i>Log de Operações</h5>
+                </div>
+                <div class="card-body">
+                    <code id="logOutput" class="codeblock">Aguardando operações...</code>
+                    <button class="btn btn-secondary btn-sm mt-2" onclick="limparLog()">
+                        <i class="fas fa-eraser mr-1"></i>Limpar Log
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12 text-center">
+            <a href="index.html" class="btn btn-info">
+                <i class="fas fa-arrow-left mr-1"></i>Voltar para o Sistema
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="JavaScript/logica.js"></script>
+<script src="JavaScript/indexeddb.js"></script>
+
+<script>
+let logMessages = [];
+
+function addLog(message) {
+    const timestamp = new Date().toLocaleTimeString();
+    logMessages.push(`[${timestamp}] ${message}`);
+    document.getElementById('logOutput').textContent = logMessages.join('\n');
+}
+
+function limparLog() {
+    logMessages = [];
+    document.getElementById('logOutput').textContent = 'Log limpo.';
+}
+
+function atualizarStatus() {
+    const statusElement = document.getElementById('dbStatus');
+    if (dataHandler && dataHandler.isReady()) {
+        statusElement.textContent = 'IndexedDB Pronto ✓';
+        statusElement.className = 'status-ready';
+        addLog('IndexedDB está pronto e operacional');
+    } else {
+        statusElement.textContent = 'IndexedDB Não Disponível ✗';
+        statusElement.className = 'status-not-ready';
+        addLog('IndexedDB ainda não está pronto');
+    }
+}
+
+function atualizarVisualizacao() {
+    if (!dataHandler || !dataHandler.isReady()) {
+        addLog('Erro: IndexedDB não está pronto');
+        return;
+    }
+
+    // Carregar salas
+    dataHandler.loadAllSalas((salas) => {
+        document.getElementById('totalSalas').textContent = salas.length;
+        document.getElementById('listaSalas').textContent = JSON.stringify(salas, null, 2);
+        addLog(`Carregadas ${salas.length} salas do IndexedDB`);
+    });
+
+    // Carregar agendamentos
+    dataHandler.loadAllAgendamentos((agends) => {
+        document.getElementById('totalAgendamentos').textContent = agends.length;
+        document.getElementById('listaAgendamentos').textContent = JSON.stringify(agends, null, 2);
+        addLog(`Carregados ${agends.length} agendamentos do IndexedDB`);
+    });
+}
+
+function migrarLocalStorageParaIndexedDB() {
+    if (!dataHandler || !dataHandler.isReady()) {
+        alert('IndexedDB não está pronto!');
+        return;
+    }
+
+    addLog('Iniciando migração do localStorage para IndexedDB...');
+
+    // Carregar dados do localStorage
+    const salasJSON = localStorage.getItem('salasCadastradas');
+    const agendamentosJSON = localStorage.getItem('agendamentos');
+
+    let salasMigradas = 0;
+    let agendamentosMigrados = 0;
+
+    if (salasJSON) {
+        const salas = JSON.parse(salasJSON);
+        salas.forEach(sala => {
+            dataHandler.saveSala(sala, (err) => {
+                if (!err) salasMigradas++;
+            });
+        });
+        addLog(`Migrando ${salas.length} salas...`);
+    }
+
+    if (agendamentosJSON) {
+        const agends = JSON.parse(agendamentosJSON);
+        agends.forEach(ag => {
+            dataHandler.saveAgendamento(ag, (err) => {
+                if (!err) agendamentosMigrados++;
+            });
+        });
+        addLog(`Migrando ${agends.length} agendamentos...`);
+    }
+
+    setTimeout(() => {
+        addLog(`Migração concluída: ${salasMigradas} salas, ${agendamentosMigrados} agendamentos`);
+        atualizarVisualizacao();
+    }, 1000);
+}
+
+function exportarDados() {
+    if (!dataHandler || !dataHandler.isReady()) {
+        alert('IndexedDB não está pronto!');
+        return;
+    }
+
+    dataHandler.loadAllSalas((salas) => {
+        dataHandler.loadAllAgendamentos((agends) => {
+            const dados = {
+                salas: salas,
+                agendamentos: agends,
+                dataExportacao: new Date().toISOString()
+            };
+
+            const json = JSON.stringify(dados, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `agendamento-backup-${Date.now()}.json`;
+            a.click();
+            
+            addLog('Dados exportados com sucesso!');
+        });
+    });
+}
+
+function limparIndexedDB() {
+    if (!confirm('Tem certeza que deseja limpar TODOS os dados do IndexedDB?')) {
+        return;
+    }
+
+    if (!dataHandler || !dataHandler.isReady()) {
+        alert('IndexedDB não está pronto!');
+        return;
+    }
+
+    dataHandler.clearAll((err, message) => {
+        if (err) {
+            addLog(`Erro ao limpar: ${err}`);
+        } else {
+            addLog('IndexedDB limpo com sucesso!');
+            atualizarVisualizacao();
+        }
+    });
+}
+
+// Inicializar quando carregar
+document.addEventListener('DOMContentLoaded', function() {
+    addLog('Página carregada, inicializando...');
+    
+    // Esperar o IndexedDB ficar pronto
+    const checkReady = setInterval(() => {
+        if (dataHandler && dataHandler.isReady()) {
+            clearInterval(checkReady);
+            atualizarStatus();
+            atualizarVisualizacao();
+        } else {
+            atualizarStatus();
+        }
+    }, 500);
+});
+</script>
+</body>
+</html>
