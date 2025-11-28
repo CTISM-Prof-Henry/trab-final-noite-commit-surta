@@ -1,29 +1,38 @@
-name: Lint
+name: Executa o linter
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  lint:
+  linter:
     runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
 
-      - name: Configurar Node.js
+    steps:
+      - name: Clona repositório
+        uses: actions/checkout@v5
+
+      - name: Configura Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: '20'
 
-      - name: Instalar dependências
+      - name: Instala dependências
         run: npm ci
 
-      - name: Executar ESLint
-        run: npx eslint JavaScript/*.js
+      - name: Roda ESLint (gera HTML e JSON)
+        run: |
+          mkdir -p eslint-report
+          npx eslint JavaScript/*.js \
+            --format html \
+            --output-file eslint-report/index.html || true
+          npx eslint JavaScript/*.js \
+            --format json \
+            --output-file eslint-report/report.json || true
+
+      - name: Publica relatório como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-report
+          path: eslint-report/
