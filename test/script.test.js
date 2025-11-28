@@ -12,6 +12,47 @@ const localStorageMock = {
   }
 };
 
+/**
+ * Função auxiliar para obter a próxima data de um dia da semana específico
+ * 
+ * @param {number} diaSemana - Número do dia da semana desejado
+ *                             0 = Domingo, 1 = Segunda, 2 = Terça, 3 = Quarta,
+ *                             4 = Quinta, 5 = Sexta, 6 = Sábado
+ * @returns {string} Data no formato YYYY-MM-DD (ex: "2025-12-06")
+ * 
+ * Exemplo de uso:
+ *   const proximoSabado = getProximaData(6);  // Retorna a data do próximo sábado
+ *   const proximoDomingo = getProximaData(0); // Retorna a data do próximo domingo
+ */
+function getProximaData(diaSemana) {
+  // Obtém a data atual e zera as horas para trabalhar apenas com datas
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0); // Zera horas, minutos, segundos e milissegundos
+  
+  // Começa a buscar a partir de 2 dias no futuro
+  // Isso evita conflitos com validações que bloqueiam "hoje" e "amanhã"
+  let diasParaAdicionar = 2;
+  
+  // Cria uma nova data somando os dias
+  let dataFutura = new Date(hoje);
+  dataFutura.setDate(hoje.getDate() + diasParaAdicionar);
+  
+  // Continua adicionando dias até encontrar o dia da semana desejado
+  // getDay() retorna 0-6 onde 0=Domingo, 1=Segunda, ..., 6=Sábado
+  while (dataFutura.getDay() !== diaSemana) {
+    diasParaAdicionar++; // Incrementa o contador
+    dataFutura = new Date(hoje); // Recria o objeto Date
+    dataFutura.setDate(hoje.getDate() + diasParaAdicionar); // Adiciona os dias
+  }
+  
+  // Formata a data no formato YYYY-MM-DD para compatibilidade com input type="date"
+  const ano = dataFutura.getFullYear(); // Ex: 2025
+  const mes = String(dataFutura.getMonth() + 1).padStart(2, '0'); // Ex: "12" (getMonth() retorna 0-11)
+  const dia = String(dataFutura.getDate()).padStart(2, '0'); // Ex: "06" (padStart garante 2 dígitos)
+  
+  return `${ano}-${mes}-${dia}`; // Retorna a string formatada: "2025-12-06"
+}
+
 // Importar funções do arquivo de lógica
 const {
   validarCadastroSala,
@@ -187,8 +228,9 @@ QUnit.module("Testes do Sistema de Agendamento", hooks => {
   });
   
   QUnit.test("Teste 10b: Não permitir agendamento para sábado", assert => {
-    // 2025-11-29 é sábado
-    const sabado = "2025-11-29";
+    // Calcula automaticamente o próximo sábado (6 representa sábado no JavaScript)
+    // Isso garante que o teste sempre use uma data válida de sábado no futuro
+    const sabado = getProximaData(6);
     
     const dados = {
       bloco: "Bloco A",
@@ -202,12 +244,13 @@ QUnit.module("Testes do Sistema de Agendamento", hooks => {
     const resultado = validarAgendamento(dados, agendamentos);
     
     assert.notOk(resultado.valido, "Não deve aceitar agendamento para sábado");
-    assert.ok(resultado.erro.includes("sábado") || resultado.erro.includes("sabado"), "Erro deve mencionar sábado");
+    assert.ok(resultado.erro.includes("sábado") || resultado.erro.includes("sabado") || resultado.erro.includes("Sábado"), "Erro deve mencionar sábado");
   });
   
   QUnit.test("Teste 10c: Não permitir agendamento para domingo", assert => {
-    // 2025-11-30 é domingo
-    const domingo = "2025-11-30";
+    // Calcula automaticamente o próximo domingo (0 representa domingo no JavaScript)
+    // Isso garante que o teste sempre use uma data válida de domingo no futuro
+    const domingo = getProximaData(0);
     
     const dados = {
       bloco: "Bloco B",

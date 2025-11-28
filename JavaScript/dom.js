@@ -1,38 +1,71 @@
 /*
   dom.js - Manipulação de DOM e interface
   
-  Este arquivo contém funções que interagem com o DOM.
-  NÃO É TESTÁVEL com ferramentas convencionais, mas está OK.
+  Este arquivo contém todas as funções que interagem diretamente com o DOM (Document Object Model).
+  Inclui: abertura de modais, atualização de tabelas, criação de cards, manipulação de eventos.
+  
+  NÃO É TESTÁVEL com ferramentas convencionais de teste unitário.
+  As funções deste arquivo dependem do jQuery e do Bootstrap para funcionarem corretamente.
 */
 
-// Mapa para manter as cores consistentes para cada agendamento
+/**
+ * Mapa para armazenar cores atribuídas a cada agendamento
+ * Chave: string única identificando o agendamento
+ * Valor: string com cor em formato HSL (ex: "hsl(180, 65%, 50%)")
+ * Isso garante que cada agendamento mantenha a mesma cor na interface
+ */
 const coresAgendamentos = new Map();
 
 /* ========== FUNÇÕES DE MODAL ========== */
 
+/**
+ * Abre o modal de cadastro de salas
+ * Usa jQuery e Bootstrap para exibir o modal #modalum
+ */
 function cadastroSalas() {
-  $('#modalum').modal('show');
+  $('#modalum').modal('show'); // Método do Bootstrap para exibir modal
 }
 
+/**
+ * Abre o modal de agendamento
+ * Usa jQuery e Bootstrap para exibir o modal #modalAgendamento
+ */
 function abrirModalAgendamento() {
-  $('#modalAgendamento').modal('show');
+  $('#modalAgendamento').modal('show'); // Método do Bootstrap para exibir modal
 }
 
+/**
+ * Abre o modal de consulta de cadastros de salas
+ * Também configura os event listeners para os filtros
+ * e atualiza a lista inicial de salas cadastradas
+ */
 function consultarCadastros() {
-  $('#modaltres').modal('show');
+  $('#modaltres').modal('show'); // Abre o modal
+  // Obtém os elementos HTML dos filtros
   const filtroBlocoEl = document.getElementById('filtroBloco');
   const filtroTipoEl = document.getElementById('filtroTipo');
   const filtroCapEl = document.getElementById('filtroCapacidade');
+  
+  // Adiciona event listeners para atualizar a lista quando os filtros mudarem
+  // Usa 'change' para select e 'input' para campos de texto/número
   if (filtroBlocoEl) filtroBlocoEl.addEventListener('change', atualizarListaCadastros);
   if (filtroTipoEl) filtroTipoEl.addEventListener('change', atualizarListaCadastros);
   if (filtroCapEl) filtroCapEl.addEventListener('input', atualizarListaCadastros);
 
+  // Atualiza a lista inicial de salas ao abrir o modal
   atualizarListaCadastros();
 }
 
+/**
+ * Abre o modal de consulta de agendamentos
+ * Configura os event listeners para os filtros de agendamentos
+ * e atualiza a lista inicial de agendamentos
+ */
 function consultarAgendamentos() {
-  $('#modaldois').modal('show');
+  $('#modaldois').modal('show'); // Abre o modal usando Bootstrap
 
+  // Adiciona event listeners para os filtros de agendamento
+  // Cada filtro atualiza os cards quando o usuário modifica os valores
   document.getElementById('filtroResponsavel').addEventListener('input', atualizarCardAgendamentos);
   document.getElementById('filtroBlocoAgendamento').addEventListener('change', atualizarCardAgendamentos);
   document.getElementById('filtroPeriodoAgendamento').addEventListener('change', atualizarCardAgendamentos);
@@ -42,50 +75,69 @@ function consultarAgendamentos() {
 
 /* ========== ATUALIZAÇÃO DE LISTAS E CARDS ========== */
 
+/**
+ * Atualiza a lista de salas cadastradas no modal de consulta
+ * Aplica os filtros selecionados e exibe os cards das salas correspondentes
+ * É chamada automaticamente quando os filtros são modificados
+ */
 function atualizarListaCadastros() {
+  // Obtém o corpo do modal onde serão exibidos os cards
   const modalBody = document.querySelector('#modaltres .modal-body');
+  // Guarda a referência da div de filtros para não removê-la
   const filtrosDiv = modalBody.querySelector('.form-row');
 
-  const blocoFiltro = document.getElementById('filtroBloco').value;
-  const tipoFiltro = document.getElementById('filtroTipo').value;
-  const capacidadeFiltro = parseInt(document.getElementById('filtroCapacidade').value) || 0;
+  // Obtém os valores atuais dos filtros
+  const blocoFiltro = document.getElementById('filtroBloco').value; // Ex: "Bloco A" ou "" (vazio = todos)
+  const tipoFiltro = document.getElementById('filtroTipo').value; // Ex: "Laboratório" ou "" (vazio = todos)
+  const capacidadeFiltro = parseInt(document.getElementById('filtroCapacidade').value) || 0; // Capacidade mínima, default 0
 
-  // Remover conteúdo anterior (exceto filtros)
+  // Remove todo o conteúdo anterior do modal, exceto os filtros
+  // Isso evita duplicação de cards ao atualizar
   Array.from(modalBody.children).forEach(child => {
     if (child !== filtrosDiv) child.remove();
   });
 
-  // Criar container para cards
+  // Cria ou obtém o container onde os cards serão inseridos
   let cardsRow = modalBody.querySelector('.cards-container');
   if (!cardsRow) {
     cardsRow = document.createElement('div');
-    cardsRow.className = 'row cards-container';
+    cardsRow.className = 'row cards-container'; // Usa grid do Bootstrap
     modalBody.appendChild(cardsRow);
   }
-  cardsRow.innerHTML = '';
+  cardsRow.innerHTML = ''; // Limpa os cards anteriores
 
-  // Filtrar salas usando função da lógica
+  // Chama a função de lógica (logica.js) para filtrar as salas
+  // Retorna apenas as salas que atendem aos critérios dos filtros
   const salasFiltradas = filtrarSalas(salasCadastradas, {
     bloco: blocoFiltro,
     tipo: tipoFiltro,
     capacidade: capacidadeFiltro
   });
 
+  // Se não houver salas filtradas, exibe uma mensagem informativa
   if (salasFiltradas.length === 0) {
     cardsRow.innerHTML = `
       <div class="col-12">
         <div class="alert alert-info">
           <i class="fas fa-info-circle mr-2"></i>
-          ${salasCadastradas.length === 0 ? 'Nenhuma sala cadastrada ainda.' : 'Nenhuma sala corresponde aos filtros selecionados.'}
+          ${
+            // Verifica se é porque não existem salas ou porque os filtros não encontraram nada
+            salasCadastradas.length === 0 
+              ? 'Nenhuma sala cadastrada ainda.' 
+              : 'Nenhuma sala corresponde aos filtros selecionados.'
+          }
         </div>
       </div>`;
-    return;
+    return; // Interrompe a execução da função
   }
   
-  // Criar cards para cada sala filtrada
+  // Cria um card para cada sala filtrada usando forEach
   salasFiltradas.forEach(sala => {
+    // Cria uma coluna com layout responsivo do Bootstrap (col-md-6 = 2 cards por linha)
     const col = document.createElement('div');
-    col.className = 'col-md-6 mb-3';
+    col.className = 'col-md-6 mb-3'; // mb-3 = margin-bottom para espaçamento
+    
+    // Define o HTML do card usando template literals para inserir os dados da sala
     col.innerHTML = `
       <div class="card shadow-sm h-100">
         <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
@@ -94,7 +146,12 @@ function atualizarListaCadastros() {
         </div>
         <div class="card-body">
           <div class="d-flex align-items-center mb-3">
-            <i class="fa ${sala.tipo === 'Laboratório' ? 'fa-desktop' : sala.tipo === 'Auditório' ? 'fa-theater-masks' : 'fa-door-closed'}" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
+            <!--Ícone dinâmico baseado no tipo da sala-->
+            <i class="fa ${
+              sala.tipo === 'Laboratório' ? 'fa-desktop' : // Ícone de computador para laboratório
+              sala.tipo === 'Auditório' ? 'fa-theater-masks' : // Ícone de teatro para auditório
+              'fa-door-closed' // Ícone de porta para sala de aula
+            }" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
             <div class="text-left">
               <h6 class="mb-0">${sala.tipo}</h6>
             </div>
@@ -108,6 +165,7 @@ function atualizarListaCadastros() {
         </div>
         <div class="card-footer bg-light">
           <div class="d-flex justify-content-end">
+            <!--Botão que chama a função excluirSala passando bloco e sala como parâmetros-->
             <button class="btn btn-outline-danger btn-sm" onclick="excluirSala('${sala.bloco}', '${sala.sala}')">
               <i class="fas fa-trash-alt mr-1"></i>Excluir
             </button>
@@ -115,24 +173,39 @@ function atualizarListaCadastros() {
         </div>
       </div>
     `;
-    cardsRow.appendChild(col);
+    cardsRow.appendChild(col); // Adiciona o card ao container
   });
 }
 
+/**
+ * Função auxiliar que chama atualizarListaCadastros
+ * Mantida para compatibilidade com código legado
+ */
 function filtrarCadastros() {
   atualizarListaCadastros();
 }
 
+/**
+ * Cria um card HTML para exibir os dados de um agendamento
+ * 
+ * @param {Object} agendamento - Objeto contendo os dados do agendamento
+ * @returns {HTMLDivElement} Elemento div contendo o card formatado
+ * 
+ * O card exibe: bloco, sala, período, responsável, disciplina e status (agendado/concluído)
+ */
 function criarCardAgendamento(agendamento) {
+  // Cria um elemento div que será uma coluna do Bootstrap
   const card = document.createElement('div');
-  card.className = 'col-md-6 mb-3';
+  card.className = 'col-md-6 mb-3'; // 2 cards por linha em telas médias e grandes
   
+  // Formata as datas para o padrão brasileiro (DD/MM/AAAA)
   const dataFormatada = new Date(agendamento.dataInicial).toLocaleDateString('pt-BR');
   const dataFinalFormatada = new Date(agendamento.dataFinal).toLocaleDateString('pt-BR');
   
+  // Determina se o agendamento já passou (status "CONCLUÍDO") ou ainda está por vir ("AGENDADO")
   const hoje = new Date();
   const dataAgendamento = new Date(agendamento.dataInicial);
-  const statusClass = dataAgendamento < hoje ? 'bg-secondary' : 'bg-info';
+  const statusClass = dataAgendamento < hoje ? 'bg-secondary' : 'bg-info'; // Cinza se passou, azul se futuro
   const statusText = dataAgendamento < hoje ? 'CONCLUÍDO' : 'AGENDADO';
 
   const iconeClasse = {
@@ -178,17 +251,27 @@ function criarCardAgendamento(agendamento) {
   return card;
 }
 
+/**
+ * Atualiza a lista de cards de agendamentos no modal de consulta
+ * Aplica os filtros selecionados (responsável, bloco, período)
+ * e exibe os cards ordenados por data
+ */
 function atualizarCardAgendamentos() {
+  // Obtém o container onde os cards serão exibidos
   const container = document.querySelector('#modaldois .cards-container');
   
-  const responsavel = document.getElementById('filtroResponsavel').value;
-  const bloco = document.getElementById('filtroBlocoAgendamento').value;
-  const periodo = document.getElementById('filtroPeriodoAgendamento').value;
+  // Lê os valores atuais dos filtros
+  const responsavel = document.getElementById('filtroResponsavel').value; // Nome do responsável
+  const bloco = document.getElementById('filtroBlocoAgendamento').value; // Bloco selecionado
+  const periodo = document.getElementById('filtroPeriodoAgendamento').value; // Manhã/Tarde/Noite
 
+  // Chama a função de lógica para filtrar os agendamentos
   const agendamentosFiltrados = filtrarAgendamentos(agendamentos, { responsavel, bloco, periodo });
 
+  // Limpa o conteúdo anterior do container
   container.innerHTML = '';
 
+  // Se não houver agendamentos, exibe mensagem informativa
   if (agendamentosFiltrados.length === 0) {
     container.innerHTML = `
       <div class="col-12">
@@ -197,11 +280,13 @@ function atualizarCardAgendamentos() {
           Nenhum agendamento encontrado com os filtros selecionados.
         </div>
       </div>`;
-    return;
+    return; // Interrompe a execução
   }
 
+  // Ordena os agendamentos por data (mais recentes primeiro)
   const agendamentosOrdenados = ordenarAgendamentos(agendamentosFiltrados);
 
+  // Cria e adiciona um card para cada agendamento
   agendamentosOrdenados.forEach(agendamento => {
     container.appendChild(criarCardAgendamento(agendamento));
   });
@@ -209,39 +294,56 @@ function atualizarCardAgendamentos() {
 
 /* ========== ATUALIZAÇÃO DE SELECTS ========== */
 
+/**
+ * Atualiza automaticamente o campo "tipo" quando uma sala é selecionada
+ * Busca o tipo da sala nos dados cadastrados e preenche o select
+ * 
+ * @param {Event} event - Evento de mudança do select de sala
+ */
 function atualizarTipoSala(event) {
-  const salaSelect = event.target;
+  const salaSelect = event.target; // Select que disparou o evento
   const blocoSelect = document.getElementById('blocoAgendamento');
   const tipoSelect = document.getElementById('tipoAgendamento');
 
+  // Busca a sala selecionada no array de salas cadastradas
   const salaSelecionada = salasCadastradas.find(
     s => s.bloco === blocoSelect.value && s.sala === salaSelect.value
   );
 
+  // Se encontrou a sala, atualiza o tipo automaticamente
   if (salaSelecionada) {
     tipoSelect.value = salaSelecionada.tipo;
   }
 }
 
+/**
+ * Atualiza as opções do select de salas com base no bloco selecionado
+ * Também gerencia o campo tipo quando o bloco é "Auditório"
+ * 
+ * @param {string} formulario - Nome do formulário ("Agendamento" ou vazio para cadastro)
+ */
 function atualizarSalas(formulario = '') {
+  // Identifica os elementos HTML baseado no formulário
   let blocoSelect, salaSelect, tipoSelect;
 
   if (formulario === 'Agendamento') {
+    // Elementos do formulário de agendamento
     blocoSelect = document.getElementById('blocoAgendamento');
     salaSelect = document.getElementById('salaAgendamento');
     tipoSelect = document.getElementById('tipoAgendamento');
   } else {
+    // Elementos do formulário de cadastro
     blocoSelect = document.getElementById('bloco');
     salaSelect = document.getElementById('sala');
     tipoSelect = document.getElementById('tipo');
   }
 
-  // Se for Auditório, força o tipo para Auditório
+  // Regra especial: Se o bloco é Auditório, força o tipo e desabilita o campo
   if (blocoSelect.value === 'Auditório') {
     tipoSelect.value = 'Auditório';
-    tipoSelect.disabled = true;
+    tipoSelect.disabled = true; // Usuário não pode alterar
   } else {
-    tipoSelect.disabled = false;
+    tipoSelect.disabled = false; // Permite alteração
   }
 
   const blocoSelecionado = blocoSelect.value;
