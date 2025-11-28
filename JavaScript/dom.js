@@ -395,16 +395,25 @@ function atualizarSalas(formulario = '') {
 
 /* ========== TABELA SEMANAL ========== */
 
+/**
+ * Renderiza a tabela semanal com todos os agendamentos.
+ * Cria uma grade de horários vs dias da semana, preenchendo com agendamentos existentes.
+ * Cada agendamento recebe uma cor única baseada em bloco-sala-horário-dia.
+ */
 function atualizarTabelaSemanal() {
+  // Dias da semana abreviados para colunas
   const diasSemana = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+  
+  // Horários da grade (50min por aula, intervalos de 10-20min)
   const horarios = [
     '07:30', '08:20', '09:10', '10:10', '11:00', '11:50',
     '13:30', '14:20', '15:10', '16:20', '17:10', '18:00',
     '19:00', '19:50', '20:40', '21:30', '22:20', '23:00'
   ];
 
-  coresAgendamentos.clear();
+  coresAgendamentos.clear(); // Limpa cores antigas antes de regenerar
 
+  // Início da estrutura HTML da tabela (table-sm = Bootstrap compacto, table-bordered = com bordas)
   let html = `
     <table class="table table-sm table-bordered text-center tabela-custom">
       <thead>
@@ -416,87 +425,113 @@ function atualizarTabelaSemanal() {
         <tbody>
   `;
 
+  // Para cada horário, criar uma linha com 7 colunas (1 hora + 6 dias)
   horarios.forEach(horario => {
     html += `<tr><td>${horario}</td>`;
+    
+    // Para cada dia da semana
     diasSemana.forEach(dia => {
+      // Converter horário atual para minutos desde meia-noite (para comparação)
       const [horaAtual, minAtual] = horario.split(':').map(Number);
       const minutoAtual = horaAtual * 60 + minAtual;
 
+      // Filtrar agendamentos que ocupam este horário + dia
       const agendamentosHorario = agendamentos.filter(ag => {
+        // Converter horários do agendamento para minutos
         const [horaInicio, minInicio] = ag.horaInicial.split(':').map(Number);
         const [horaFim, minFim] = ag.horaFinal.split(':').map(Number);
         const minutoInicio = horaInicio * 60 + minInicio;
         const minutoFim = horaFim * 60 + minFim;
 
+        // Comparar dia (agendamento armazena "Segunda", "Terça", etc - pegar 3 primeiras letras)
         const diaAbreviado = ag.diaSemana.substring(0, 3);
 
+        // Verifica se: mesmo dia E horário atual está dentro do intervalo [início, fim)
         return diaAbreviado === dia &&
                minutoAtual >= minutoInicio &&
                minutoAtual < minutoFim;
       });
 
       if (agendamentosHorario.length > 0) {
-        const ag = agendamentosHorario[0];
+        // Há agendamento neste horário+dia - renderizar célula preenchida
+        const ag = agendamentosHorario[0]; // Pega primeiro (validação garante não haver conflitos)
         
+        // Gerar chave única para este agendamento (mesma cor para todas as células do mesmo agendamento)
         const chaveAgendamento = `${ag.bloco}-${ag.sala}-${ag.horaInicial}-${ag.diaSemana}`;
         if (!coresAgendamentos.has(chaveAgendamento)) {
-          coresAgendamentos.set(chaveAgendamento, gerarCorAleatoria());
+          coresAgendamentos.set(chaveAgendamento, gerarCorAleatoria()); // Gera cor aleatória apenas uma vez
         }
         const corAgendamento = coresAgendamentos.get(chaveAgendamento);
         
+        // Célula com cor de fundo, mostra sala e disciplina/nome
         html += `<td class="text-white small p-1" style="font-size: 0.8rem; background-color: ${corAgendamento}">
           ${ag.bloco}-${ag.sala}<br>
           <span style="font-size: 0.7rem;">${ag.disciplina || ag.nome}</span>
         </td>`;
       } else {
+        // Célula vazia (sem agendamento)
         html += '<td class="p-1"></td>';
       }
     });
     html += '</tr>';
   });
 
+  // Fecha estrutura HTML da tabela
   html += `
         </tbody>
       </table>
     </div>
   `;
 
+  // Renderiza no DOM (substitui HTML do container)
   const container = document.querySelector('.table-responsive');
   container.innerHTML = html;
 }
 
 /* ========== HANDLERS DE FORMULÁRIO ========== */
 
+/**
+ * Processa o formulário de cadastro de sala.
+ * @param {Event} event - Evento de submit do formulário
+ */
 function cadastrarSala(event) {
-  event.preventDefault();
+  event.preventDefault(); // Impede reload da página
 
+  // Capturar valores dos campos do formulário
   const bloco = document.getElementById('bloco').value;
   const sala = document.getElementById('sala').value;
   const capacidade = parseInt(document.getElementById('capacidade').value);
   const tipo = document.getElementById('tipo').value;
 
-  // Validar usando função da lógica
+  // Validar usando função da lógica (verifica duplicatas, bloco Auditório, etc)
   const validacao = validarCadastroSala(bloco, sala, capacidade, tipo, salasCadastradas);
   
   if (!validacao.valido) {
-    alert(validacao.erro);
+    alert(validacao.erro); // Exibe mensagem de erro ao usuário
     return;
   }
 
-  // Forçar tipo se for Auditório
+  // Forçar tipo se for Auditório (regra de negócio especial)
   const tipoFinal = bloco === 'Auditório' ? 'Auditório' : tipo;
 
+  // Adicionar sala ao array global e persistir no localStorage/IndexedDB
   adicionarSala({ bloco, sala, capacidade, tipo: tipoFinal });
   salvarSalasCadastradas();
 
+  // Feedback ao usuário e fechar modal Bootstrap
   alert('Sala cadastrada com sucesso!');
-  $('#modalum').modal('hide');
-  event.target.reset();
+  $('#modalum').modal('hide'); // Método jQuery do Bootstrap
+  event.target.reset(); // Limpar campos do formulário
 }
 
+/**
+ * Processa o formulário de agendamento de sala.
+ * @param {Event} event - Evento de submit do formulário
+ */
 const realizarAgendamento = function(event) {
-  event.preventDefault();
+  event.preventDefault(); // Impede reload da página
 
+  // Capturar todos os valores do formulário de agendamento
   const bloco = document.getElementById('blocoAgendamento').value;
   const sala = document.getElementById('salaAgendamento').value;
   const tipo = document.getElementById('tipoAgendamento').value;
@@ -507,26 +542,27 @@ const realizarAgendamento = function(event) {
   const cpf = document.getElementById('cpfAgendamento').value;
   const nome = document.getElementById('nomeAgendamento').value;
   const disciplina = document.getElementById('disciplinaAgendamento').value;
-  const capacidade = parseInt(document.getElementById('capacidadeAgendamento').value) || 0;
+  const capacidade = parseInt(document.getElementById('capacidadeAgendamento').value) || 0; // Default 0 se vazio
 
-  // Validar usando função da lógica
+  // Validar agendamento (verifica conflitos, horários, capacidade, etc)
   const validacao = validarAgendamento(
     { bloco, sala, dataInicial, horaInicial, horaFinal, capacidade },
     agendamentos
   );
 
   if (!validacao.valido) {
-    alert(validacao.erro);
+    alert(validacao.erro); // Exibe mensagem de erro ao usuário
     return;
   }
 
+  // Adicionar agendamento ao array global (validacao.diaSemana calculado automaticamente)
   adicionarAgendamento({
     bloco,
     sala,
     tipo,
     dataInicial,
     dataFinal,
-    diaSemana: validacao.diaSemana,
+    diaSemana: validacao.diaSemana, // Dia da semana calculado pela validação
     horaInicial,
     horaFinal,
     cpf,
@@ -534,49 +570,73 @@ const realizarAgendamento = function(event) {
     disciplina
   });
 
+  // Persistir no localStorage/IndexedDB
   salvarAgendamentos();
+  
+  // Feedback ao usuário
   alert('Agendamento realizado com sucesso!');
-  $('#modalAgendamento').modal('hide');
-  atualizarTabelaSemanal();
+  $('#modalAgendamento').modal('hide'); // Fechar modal Bootstrap
+  atualizarTabelaSemanal(); // Atualizar visualização da tabela
 };
 
+/**
+ * Exclui uma sala cadastrada.
+ * @param {string} bloco - Bloco da sala (A, B, C, Auditório)
+ * @param {string} numeroSala - Número da sala
+ */
 function excluirSala(bloco, numeroSala) {
-  removerSala(bloco, numeroSala);
-  salvarSalasCadastradas();
-  alert('Sala excluída com sucesso!');
-  atualizarListaCadastros();
+  removerSala(bloco, numeroSala); // Remove do array global
+  salvarSalasCadastradas(); // Persiste no localStorage/IndexedDB
+  alert('Sala excluída com sucesso!'); // Feedback ao usuário
+  atualizarListaCadastros(); // Atualiza visualização dos cards
 }
 
+/**
+ * Exclui um agendamento existente após confirmação.
+ * @param {string} dataAgendamento - Data do agendamento (YYYY-MM-DD)
+ * @param {string} sala - Número da sala agendada
+ * @param {string} horaInicial - Horário inicial (HH:MM)
+ */
 function excluirAgendamento(dataAgendamento, sala, horaInicial) {
+  // Confirmar exclusão (evitar exclusões acidentais)
   if (confirm('Tem certeza que deseja excluir este agendamento?')) {
-    removerAgendamento(dataAgendamento, sala, horaInicial);
-    salvarAgendamentos();
-    consultarAgendamentos();
-    atualizarTabelaSemanal();
+    removerAgendamento(dataAgendamento, sala, horaInicial); // Remove do array global
+    salvarAgendamentos(); // Persiste no localStorage/IndexedDB
+    consultarAgendamentos(); // Atualiza visualização dos cards na página de consulta
+    atualizarTabelaSemanal(); // Atualiza tabela semanal
   }
 }
 
 /* ========== INICIALIZAÇÃO ========== */
 
+/**
+ * Inicializa a aplicação quando o DOM estiver completamente carregado.
+ * Configura event listeners e carrega dados persistidos.
+ */
 document.addEventListener('DOMContentLoaded', function() {
+  // Carregar dados persistidos do localStorage/IndexedDB para arrays globais
   carregarSalasCadastradas();
   carregarAgendamentos();
 
+  // Configurar event listener para formulário de cadastro de salas
   const formCadastro = document.querySelector('#modalum form');
   if (formCadastro) {
     formCadastro.addEventListener('submit', function(e) {
-      e.preventDefault();
-      cadastrarSala(e);
+      e.preventDefault(); // Impede submit padrão
+      cadastrarSala(e); // Chama handler customizado
     });
   }
 
+  // Configurar event listener para formulário de agendamento
   const formAgendamento = document.querySelector('#modalAgendamento form');
   if (formAgendamento) {
     formAgendamento.addEventListener('submit', realizarAgendamento);
   }
 
+  // Renderizar tabela semanal inicial
   atualizarTabelaSemanal();
 
+  // Configurar auto-preenchimento de tipo quando sala é selecionada
   const salaAgendamentoSelect = document.getElementById('salaAgendamento');
   if (salaAgendamentoSelect) {
     salaAgendamentoSelect.addEventListener('change', atualizarTipoSala);
