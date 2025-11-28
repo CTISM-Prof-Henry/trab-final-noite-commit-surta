@@ -1,0 +1,4907 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ESLint Report</title>
+        <link rel="icon" type="image/png" sizes="any" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAHaAAAB2gGFomX7AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAABD1JREFUWMPFl11sk2UUx3/nbYtjxS1MF7MLMTECMgSTtSSyrQkLhAj7UBPnDSEGoxegGzMwojhXVpmTAA5iYpSoMQa8GBhFOrMFk03buei6yRAlcmOM0SEmU9d90b19jxcM1o5+sGnsc/e+z/l6ztf/HFFVMnns6QieeOCHBePGsHM+wrOtvLG2C4WRVDSSygNV7sCjlspxwDnPB44aols/DXk+mbMBmx/6OseITF1CuOtfevkPh2Uu+/jbdX8lujSScRlT5r7/QDlAfsRmfzmpnkQ/H3H13gf6bBrBn1uqK8WylgEnU8eZmk1repbfchJG1TyKyIKEwuBHFd3lD3naY3O1siiwXsVoBV2VgM1ht/QQUJk2ByqKghsQziYQ8ifKgexIXmuyzC4r67Y7R+xPAfuB/Nn3Cpva+0s7khpQVtZtd4bt51BWxtBYAiciprG7c7D4SixzU9PYalDL6110Ifb/w8W9eY7JqFeFHbO8fPGyLHwwFHJNJTSgwtVTB9oaw9BlQ+tO93vOxypoaQnfEYlI43SeCHDC4TDq9+51/h5fxr33q0ZfV9g04wat9Q943rjJgCp3952W2i8Bi6eDvdsfKj0cK/DYMRyXL4/sUJUmIHd2zYMezsvLaamp4WpcWN3BXSiHpuMwbGbZlnZ8tXY4rgosy+G7oRwQ0cAsd28YGgqfU5UjCZQDLALxDg+Hv/P5Rqvj4hwrS8izXzWb4spwc1GgENFnkpWRzxeuB+ssUHgLdb9UVdt8vpGdKQpze7n7y1U3DBChNRUuqOo9c+0+qpKKxyZqtAIYla7gY4JszAAQri93BSsMRZoyBcUC+w3Q3AyOA4sNhAOZ0q7Iq0b2vUNvK5zPgP+/H8+Zetdoa6uOikhdGurxebwvJY8Iz3V1rTMNAH+opEuQj5KTT/qA1yC+wyUjBm12OidaUtCcPNNX2h0Hx2JG69VulANZAJZJwfU7rzd/FHixuXniTdM0m4GtSQT7bTartqEh9yfImUEzkwKZmTwmo5a5JwkYBfcDL01/RkR5y8iWhtPBknB8ZxwtU9UjwOrrKCeizzc25nTGg1F/turEHoU9wMLpDvWKf8DTmNCAKnd/tqUTF4ElMXJ+A5rWDJS+41WsGWzALhJ+ErBWrLj9g+pqojHxlXJX8HGUg0BsR/x1yhxf3jm4cSzpQFLp6tmi6PEE7g1ZhtZ91ufpSZUAFa6gC+UoQslNaSmypT1U8mHKiUgEKS8KfgF4EpYunFI16tsHin+OG0LcgQK7yj7g6cSzpva2D3hKVNG0Y3mVO1BkqfSlmJrHBQ4uvM12gJHc6ETW8HZVfMRmXvyxxNC1Z/o839zyXlDuCr4nsC11J+MXueaVJWn6yPv+/pJtc9oLTNN4AeTvNGByd3rlhE2x9s5pLwDoHCy+grDzWmOZ95lUtLYj5Bma126Y8eX0/zj/ADxGyViSg4BXAAAAAElFTkSuQmCC">
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMjk0LjgyNSAyNTguOTgyJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPg0KPHBhdGggZmlsbD0nIzgwODBGMicgZD0nTTk3LjAyMSw5OS4wMTZsNDguNDMyLTI3Ljk2MmMxLjIxMi0wLjcsMi43MDYtMC43LDMuOTE4LDBsNDguNDMzLDI3Ljk2MiBjMS4yMTEsMC43LDEuOTU5LDEuOTkzLDEuOTU5LDMuMzkzdjU1LjkyNGMwLDEuMzk5LTAuNzQ4LDIuNjkzLTEuOTU5LDMuMzk0bC00OC40MzMsMjcuOTYyYy0xLjIxMiwwLjctMi43MDYsMC43LTMuOTE4LDAgbC00OC40MzItMjcuOTYyYy0xLjIxMi0wLjctMS45NTktMS45OTQtMS45NTktMy4zOTR2LTU1LjkyNEM5NS4wNjMsMTAxLjAwOSw5NS44MSw5OS43MTYsOTcuMDIxLDk5LjAxNicvPg0KPHBhdGggZmlsbD0nIzRCMzJDMycgZD0nTTI3My4zMzYsMTI0LjQ4OEwyMTUuNDY5LDIzLjgxNmMtMi4xMDItMy42NC01Ljk4NS02LjMyNS0xMC4xODgtNi4zMjVIODkuNTQ1IGMtNC4yMDQsMC04LjA4OCwyLjY4NS0xMC4xOSw2LjMyNWwtNTcuODY3LDEwMC40NWMtMi4xMDIsMy42NDEtMi4xMDIsOC4yMzYsMCwxMS44NzdsNTcuODY3LDk5Ljg0NyBjMi4xMDIsMy42NCw1Ljk4Niw1LjUwMSwxMC4xOSw1LjUwMWgxMTUuNzM1YzQuMjAzLDAsOC4wODctMS44MDUsMTAuMTg4LTUuNDQ2bDU3Ljg2Ny0xMDAuMDEgQzI3NS40MzksMTMyLjM5NiwyNzUuNDM5LDEyOC4xMjgsMjczLjMzNiwxMjQuNDg4IE0yMjUuNDE5LDE3Mi44OThjMCwxLjQ4LTAuODkxLDIuODQ5LTIuMTc0LDMuNTlsLTczLjcxLDQyLjUyNyBjLTEuMjgyLDAuNzQtMi44ODgsMC43NC00LjE3LDBsLTczLjc2Ny00Mi41MjdjLTEuMjgyLTAuNzQxLTIuMTc5LTIuMTA5LTIuMTc5LTMuNTlWODcuODQzYzAtMS40ODEsMC44ODQtMi44NDksMi4xNjctMy41OSBsNzMuNzA3LTQyLjUyN2MxLjI4Mi0wLjc0MSwyLjg4Ni0wLjc0MSw0LjE2OCwwbDczLjc3Miw0Mi41MjdjMS4yODMsMC43NDEsMi4xODYsMi4xMDksMi4xODYsMy41OVYxNzIuODk4eicvPg0KPC9zdmc+">
+        <style>
+            body {
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                margin: 0;
+                padding: 0;
+                color: #333;
+            }
+
+            #overview {
+                padding: 20px 30px;
+            }
+
+            td,
+            th {
+                padding: 5px 10px;
+            }
+
+            h1 {
+                margin: 0;
+            }
+
+            table {
+                margin: 30px;
+                width: calc(100% - 60px);
+                max-width: 1000px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                border-spacing: 0;
+            }
+
+            th {
+                font-weight: 400;
+                font-size: medium;
+                text-align: left;
+                cursor: pointer;
+            }
+
+            td.clr-1,
+            td.clr-2,
+            th span {
+                font-weight: 700;
+            }
+
+            th span {
+                float: right;
+                margin-left: 20px;
+            }
+
+            th span::after {
+                content: "";
+                clear: both;
+                display: block;
+            }
+
+            tr:last-child td {
+                border-bottom: none;
+            }
+
+            tr td:first-child,
+            tr td:last-child {
+                color: #9da0a4;
+            }
+
+            #overview.bg-0,
+            tr.bg-0 th {
+                color: #468847;
+                background: #dff0d8;
+                border-bottom: 1px solid #d6e9c6;
+            }
+
+            #overview.bg-1,
+            tr.bg-1 th {
+                color: #f0ad4e;
+                background: #fcf8e3;
+                border-bottom: 1px solid #fbeed5;
+            }
+
+            #overview.bg-2,
+            tr.bg-2 th {
+                color: #b94a48;
+                background: #f2dede;
+                border-bottom: 1px solid #eed3d7;
+            }
+
+            td {
+                border-bottom: 1px solid #ddd;
+            }
+
+            td.clr-1 {
+                color: #f0ad4e;
+            }
+
+            td.clr-2 {
+                color: #b94a48;
+            }
+
+            td a {
+                color: #3a33d1;
+                text-decoration: none;
+            }
+
+            td a:hover {
+                color: #272296;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="overview" class="bg-2">
+            <h1>ESLint Report</h1>
+            <div>
+                <span>500 problems (500 errors, 0 warnings)</span> - Generated on Fri Nov 28 2025 19:10:37 GMT-0300 (Horário Padrão de Brasília)
+            </div>
+        </div>
+        <table>
+            <tbody>
+                <tr class="bg-2" data-group="f-0">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\JavaScript\dom.js
+        <span>39 problems (39 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-0">
+    <td>25:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;cadastroSalas&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>26:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>33:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;abrirModalAgendamento&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>34:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>42:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;consultarCadastros&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>43:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>65:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>111:26</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;filtrarSalas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>111:39</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>125:13</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>184:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;filtrarCadastros&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>269:33</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;filtrarAgendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>269:53</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;agendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>287:33</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;ordenarAgendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>309:27</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>325:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;atualizarSalas&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>358:37</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>382:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasPorBloco&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>387:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasPorBloco&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>439:35</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;agendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>462:51</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;gerarCorAleatoria&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>507:21</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;validarCadastroSala&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>507:72</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>518:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;adicionarSala&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>519:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salvarSalasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>523:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>548:21</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;validarAgendamento&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>550:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;agendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>559:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;adicionarAgendamento&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>574:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salvarAgendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>578:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>587:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;excluirSala&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>588:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;removerSala&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>589:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salvarSalasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>600:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;excluirAgendamento&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>603:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;removerAgendamento&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>604:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salvarAgendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>618:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;carregarSalasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-0">
+    <td>619:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;carregarAgendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-1">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\JavaScript\index.js
+        <span>13 problems (13 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-1">
+    <td>19:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;cadastroSalas&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>21:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>24:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;abrirModalAgendamento&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>26:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>29:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;consultarCadastros&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>32:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>127:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;filtrarCadastros&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>186:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;excluirSala&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>232:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>455:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>660:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>669:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;excluirAgendamento&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-1">
+    <td>714:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-2">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\JavaScript\indexeddb.js
+        <span>11 problems (11 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-2">
+    <td>31:13</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;carregarSalasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-2">
+    <td>32:13</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;carregarAgendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-2">
+    <td>91:17</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-2">
+    <td>92:17</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-2">
+    <td>99:17</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;agendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-2">
+    <td>100:17</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;agendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-2">
+    <td>105:17</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;atualizarTabelaSemanal&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-2">
+    <td>157:30</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;event&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-2">
+    <td>330:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-2">
+    <td>341:38</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-2">
+    <td>342:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-3">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\JavaScript\logica.js
+        <span>2 problems (2 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-3">
+    <td>273:38</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-3">
+    <td>274:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-4">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\JavaScript\persistencia.js
+        <span>22 problems (22 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-4">
+    <td>16:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>17:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>25:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salvarSalasCadastradas&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>27:59</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>30:45</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>30:60</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>32:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>33:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>34:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>36:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;agendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>37:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>51:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;agendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>52:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;agendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>60:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salvarAgendamentos&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>62:55</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;agendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>65:45</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>65:60</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>67:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>68:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;salasCadastradas&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>69:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>71:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;agendamentos&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-4">
+    <td>72:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dataHandler&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-0" data-group="f-5">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\eslint.config.mjs
+        <span>0 problems</span>
+    </th>
+</tr>
+
+<tr class="bg-0" data-group="f-6">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\scripts\custom.js
+        <span>0 problems</span>
+    </th>
+</tr>
+
+<tr class="bg-2" data-group="f-7">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\bundle.f55a23d4.min.js
+        <span>71 problems (71 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-7">
+    <td>1:440</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;r&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>1:592</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;o&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>1:1322</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>1:1333</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>1:2183</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;k&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>1:2469</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;k&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>1:4124</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;r&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:102</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:113</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:410</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;A&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:1373</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;k&#39; is a function.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-func-assign" target="_blank" rel="noopener noreferrer">no-func-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:1404</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;k&#39; is a function.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-func-assign" target="_blank" rel="noopener noreferrer">no-func-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:2419</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Fe&#39; is a function.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-func-assign" target="_blank" rel="noopener noreferrer">no-func-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:2451</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Fe&#39; is a function.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-func-assign" target="_blank" rel="noopener noreferrer">no-func-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:3149</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;br&#39; is a function.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-func-assign" target="_blank" rel="noopener noreferrer">no-func-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:3822</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;D&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:3857</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Ut&#39; is a function.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-func-assign" target="_blank" rel="noopener noreferrer">no-func-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:9495</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;pL&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:11985</td>
+    <td class="clr-2">Error</td>
+    <td>Unsafe usage of ThrowStatement.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unsafe-finally" target="_blank" rel="noopener noreferrer">no-unsafe-finally</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>12:12464</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;AsyncIterator&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:554</td>
+    <td class="clr-2">Error</td>
+    <td>Unsafe usage of ThrowStatement.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unsafe-finally" target="_blank" rel="noopener noreferrer">no-unsafe-finally</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:960</td>
+    <td class="clr-2">Error</td>
+    <td>Unsafe usage of ThrowStatement.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unsafe-finally" target="_blank" rel="noopener noreferrer">no-unsafe-finally</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:8804</td>
+    <td class="clr-2">Error</td>
+    <td>Unsafe usage of ThrowStatement.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unsafe-finally" target="_blank" rel="noopener noreferrer">no-unsafe-finally</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:12487</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;r&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:12489</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;o&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:13890</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;o&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:14780</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a conditional expression and instead saw an assignment.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-cond-assign" target="_blank" rel="noopener noreferrer">no-cond-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:14821</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a conditional expression and instead saw an assignment.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-cond-assign" target="_blank" rel="noopener noreferrer">no-cond-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:14861</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a conditional expression and instead saw an assignment.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-cond-assign" target="_blank" rel="noopener noreferrer">no-cond-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:16510</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a conditional expression and instead saw an assignment.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-cond-assign" target="_blank" rel="noopener noreferrer">no-cond-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:17735</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:17757</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected comma in middle of array.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-sparse-arrays" target="_blank" rel="noopener noreferrer">no-sparse-arrays</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:17775</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:18958</td>
+    <td class="clr-2">Error</td>
+    <td>Unsafe usage of ThrowStatement.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unsafe-finally" target="_blank" rel="noopener noreferrer">no-unsafe-finally</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:19277</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:19397</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:19509</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected comma in middle of array.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-sparse-arrays" target="_blank" rel="noopener noreferrer">no-sparse-arrays</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:19588</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:26801</td>
+    <td class="clr-2">Error</td>
+    <td>Unsafe usage of ThrowStatement.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unsafe-finally" target="_blank" rel="noopener noreferrer">no-unsafe-finally</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:26876</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;y&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:26989</td>
+    <td class="clr-2">Error</td>
+    <td>Unsafe usage of ThrowStatement.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unsafe-finally" target="_blank" rel="noopener noreferrer">no-unsafe-finally</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:27183</td>
+    <td class="clr-2">Error</td>
+    <td>Unsafe usage of ThrowStatement.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unsafe-finally" target="_blank" rel="noopener noreferrer">no-unsafe-finally</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:30332</td>
+    <td class="clr-2">Error</td>
+    <td>Unsafe usage of ThrowStatement.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unsafe-finally" target="_blank" rel="noopener noreferrer">no-unsafe-finally</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:42442</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_hash&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:42580</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_hash&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:42605</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_get&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:42713</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_set&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:46985</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;c&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:47868</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;c&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:50315</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a conditional expression and instead saw an assignment.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-cond-assign" target="_blank" rel="noopener noreferrer">no-cond-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:52063</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;viewport$&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:58439</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;mermaid&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:58607</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;mermaid&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:58908</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;mermaid&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:61035</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_get&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:61058</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_set&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:65532</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_get&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:66885</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_set&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:69069</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;t[r]&#39; is assigned to itself.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-self-assign" target="_blank" rel="noopener noreferrer">no-self-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:72165</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;r&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:73315</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_get&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:73555</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_set&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:74934</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected lexical declaration in case block.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-case-declarations" target="_blank" rel="noopener noreferrer">no-case-declarations</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:77753</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;n&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:80353</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_get&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:80437</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_get&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:80514</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__md_set&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:86840</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;__index&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:87519</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected lexical declaration in case block.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-case-declarations" target="_blank" rel="noopener noreferrer">no-case-declarations</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:87597</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected lexical declaration in case block.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-case-declarations" target="_blank" rel="noopener noreferrer">no-case-declarations</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-7">
+    <td>14:87671</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected lexical declaration in case block.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-case-declarations" target="_blank" rel="noopener noreferrer">no-case-declarations</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-8">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.ar.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-8">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-8">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-8">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-9">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.da.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-9">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-9">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-9">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-10">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.de.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-10">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-10">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-10">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-11">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.du.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-11">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-11">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-11">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-12">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.el.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-12">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-12">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-12">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-13">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.es.min.js
+        <span>4 problems (4 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-13">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-13">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-13">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-13">
+    <td>18:3980</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-14">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.fi.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-14">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-14">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-14">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-15">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.fr.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-15">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-15">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-15">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-16">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.he.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-16">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-16">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-16">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-17">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.hi.min.js
+        <span>4 problems (4 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-17">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-17">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-17">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-17">
+    <td>1:1886</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;isLunr2&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-18">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.hu.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-18">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-18">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-18">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-19">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.hy.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-19">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-19">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-19">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-20">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.it.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-20">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-20">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-20">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-21">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.ja.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-21">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-21">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-21">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-22">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.jp.min.js
+        <span>2 problems (2 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-22">
+    <td>1:1</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-22">
+    <td>1:16</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;require&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-23">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.kn.min.js
+        <span>4 problems (4 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-23">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-23">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-23">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-23">
+    <td>1:1901</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;isLunr2&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-24">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.ko.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-24">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-24">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-24">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-25">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.multi.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-25">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-25">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-25">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-26">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.nl.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-26">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-26">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-26">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-27">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.no.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-27">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-27">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-27">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-28">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.pt.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-28">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-28">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-28">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-29">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.ro.min.js
+        <span>4 problems (4 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-29">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-29">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-29">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-29">
+    <td>18:3547</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-30">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.ru.min.js
+        <span>6 problems (6 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-30">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-30">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-30">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-30">
+    <td>18:1356</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-30">
+    <td>18:1937</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-30">
+    <td>18:1970</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-31">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.sa.min.js
+        <span>4 problems (4 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-31">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-31">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-31">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-31">
+    <td>1:2438</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;isLunr2&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-32">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.stemmer.support.min.js
+        <span>7 problems (7 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-32">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-32">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-32">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-32">
+    <td>1:1978</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a conditional expression and instead saw an assignment.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-cond-assign" target="_blank" rel="noopener noreferrer">no-cond-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-32">
+    <td>1:2090</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;_&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-32">
+    <td>1:2447</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a conditional expression and instead saw an assignment.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-cond-assign" target="_blank" rel="noopener noreferrer">no-cond-assign</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-32">
+    <td>1:2561</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;_&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-33">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.sv.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-33">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-33">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-33">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-34">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.ta.min.js
+        <span>4 problems (4 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-34">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-34">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-34">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-34">
+    <td>1:1493</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;isLunr2&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-35">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.te.min.js
+        <span>4 problems (4 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-35">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-35">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-35">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-35">
+    <td>1:1445</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;isLunr2&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-36">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.th.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-36">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-36">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-36">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-37">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.tr.min.js
+        <span>4 problems (4 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-37">
+    <td>18:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-37">
+    <td>18:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-37">
+    <td>18:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-37">
+    <td>18:9734</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;tr&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-38">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.vi.min.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-38">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-38">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-38">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-39">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\min\lunr.zh.min.js
+        <span>4 problems (4 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-39">
+    <td>1:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-39">
+    <td>1:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-39">
+    <td>1:89</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-39">
+    <td>1:106</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;require&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-40">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\tinyseg.js
+        <span>3 problems (3 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-40">
+    <td>6:41</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-40">
+    <td>8:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-40">
+    <td>15:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-41">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\lunr\wordcut.js
+        <span>134 problems (134 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-41">
+    <td>1:73</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1:128</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1:140</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1:244</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;global&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1:370</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1:377</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1:481</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;require&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1:781</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;require&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1:863</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>58:49</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>64:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;glob&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>75:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dictPathFile&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>205:53</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>282:28</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;tag&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>286:54</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \@.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>286:56</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \(.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>286:58</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \).</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>286:60</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>286:62</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \,.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>286:66</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \..</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>306:34</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>308:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;WordcutCore&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>323:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;self&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>385:68</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>420:49</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>433:28</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;tag&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>453:28</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;tag&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>488:34</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>489:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;sys&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>509:31</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dict_path&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>532:183</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>619:34</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>961:26</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;block&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>961:45</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;error&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>961:64</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;message&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>966:32</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;block&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>966:51</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;message&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>980:45</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1041:35</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1123:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;identity&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1184:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;post&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1244:55</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;require&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1244:63</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;module&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1244:70</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1246:35</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1261:35</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1394:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;m&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1735:14</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1813:95</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1859:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Minimatch&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1867:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;alphasort&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1868:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;alphasorti&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>1952:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;n&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2022:30</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2078:16</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2208:14</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2209:11</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;e&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2229:12</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2230:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;e&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2231:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;newPattern&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2332:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;self&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2469:19</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2512:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exists&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2569:206</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2576:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Minimatch&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2577:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Glob&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2578:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;util&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2583:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;alphasort&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2584:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;alphasorti&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2747:14</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2748:11</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;e&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2768:12</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2769:9</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;e&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2781:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;abs&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2808:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;stat&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2811:12</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;er&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2830:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;entries&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2950:19</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2992:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exists&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>2998:14</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;er&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3005:16</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;er&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3015:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;c&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3033:156</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3091:70</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3116:35</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3123:10</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;er&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3123:14</td>
+    <td class="clr-2">Error</td>
+    <td>Empty block statement.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-empty" target="_blank" rel="noopener noreferrer">no-empty</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3146:30</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3146:52</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3150:32</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3169:23</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3169:26</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;list&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3297:30</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;si&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3297:34</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;set&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3412:30</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3412:48</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3584:20</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;er&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3739:12</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;er&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3785:16</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>3797:12</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;ex&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4041:65</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4141:37</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4141:50</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4141:61</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4206:54</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;index&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4249:12</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4313:48</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4323:38</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4323:48</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4323:55</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4323:63</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4323:73</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \/.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4337:48</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4362:14</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;e&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4371:14</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;e&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4388:13</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;e&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4392:17</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;e&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4413:14</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;e&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4417:18</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;e&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4511:31</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;name&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4513:29</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;name&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>4518:27</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;dir&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>5428:38</td>
+    <td class="clr-2">Error</td>
+    <td>Do not access Object.prototype method &#39;propertyIsEnumerable&#39; from target object.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-prototype-builtins" target="_blank" rel="noopener noreferrer">no-prototype-builtins</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>5634:7</td>
+    <td class="clr-2">Error</td>
+    <td>Expected a &#39;break&#39; statement before &#39;case&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-fallthrough" target="_blank" rel="noopener noreferrer">no-fallthrough</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>5757:7</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected constant truthiness on the left-hand side of a `&#38;&#38;` expression.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-constant-binary-expression" target="_blank" rel="noopener noreferrer">no-constant-binary-expression</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>6075:43</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>6115:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>6127:18</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;_&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>6278:30</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;styleType&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>6286:31</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;idx&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>6511:7</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;numLinesEst&#39; is assigned a value but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>6515:31</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected control character(s) in regular expression: \x1b.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-control-regex" target="_blank" rel="noopener noreferrer">no-control-regex</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>6671:66</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;global&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-41">
+    <td>6672:86</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;exports&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-42">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\site\assets\javascripts\workers\search.973d3a69.min.js
+        <span>66 problems (66 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-42">
+    <td>1:498</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;r&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>14:461</td>
+    <td class="clr-2">Error</td>
+    <td>Unnecessary escape character: \-.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-useless-escape" target="_blank" rel="noopener noreferrer">no-useless-escape</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>25:1404</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Q&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>25:1551</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Q&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>25:1600</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Q&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>25:1674</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Q&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>25:1752</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Q&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>25:1815</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Q&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>25:1882</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;Q&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>34:815</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;u&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>34:1144</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;c&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>34:3207</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:534</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;u&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:1007</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;d&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:1038</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;y&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:1550</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;d&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:1581</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;y&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:1658</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;u&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:1692</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;y&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:1868</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;u&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:1892</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;P&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:1956</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;u&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:1980</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;L&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:3040</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;c&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>37:3064</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;f&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:1924</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;s&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:9513</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;n&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:9738</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;n&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:10186</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:10346</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:11775</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:12499</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;i&#39; is already defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-redeclare" target="_blank" rel="noopener noreferrer">no-redeclare</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:12629</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:12640</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;define&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:15202</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:15344</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected lexical declaration in case block.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-case-declarations" target="_blank" rel="noopener noreferrer">no-case-declarations</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:15370</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:15413</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:15480</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:15513</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:15635</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:15760</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:15928</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected control character(s) in regular expression: \x00.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-control-regex" target="_blank" rel="noopener noreferrer">no-control-regex</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:16244</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:16444</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:16573</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:16613</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:16719</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:16805</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:17035</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:17070</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:17579</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:17831</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:17938</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:17981</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:18030</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:18079</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:18112</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:18121</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:18243</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:18248</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:18722</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:19786</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:19824</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;lunr&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:20423</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;importScripts&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-42">
+    <td>40:20617</td>
+    <td class="clr-2">Error</td>
+    <td>Unexpected lexical declaration in case block.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-case-declarations" target="_blank" rel="noopener noreferrer">no-case-declarations</a>
+    </td>
+</tr>
+
+<tr class="bg-2" data-group="f-43">
+    <th colspan="4">
+        [+] C:\Users\aluno\Desktop\trab-final-noite-commit-surta-main\test\script.test.js
+        <span>28 problems (28 errors, 0 warnings)</span>
+    </th>
+</tr>
+<tr style="display: none;" class="f-43">
+    <td>70:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;require&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>73:1</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>77:5</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;global&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>87:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>101:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>116:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>123:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>130:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>141:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>151:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>164:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>187:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>207:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>230:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>250:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>270:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>289:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>313:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>343:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>348:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>353:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>358:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>365:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>377:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>389:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>401:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>427:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+<tr style="display: none;" class="f-43">
+    <td>438:3</td>
+    <td class="clr-2">Error</td>
+    <td>&#39;QUnit&#39; is not defined.</td>
+    <td>
+        <a href="https://eslint.org/docs/latest/rules/no-undef" target="_blank" rel="noopener noreferrer">no-undef</a>
+    </td>
+</tr>
+
+            </tbody>
+        </table>
+        <script type="text/javascript">
+            var groups = document.querySelectorAll("tr[data-group]");
+            for (i = 0; i < groups.length; i++) {
+                groups[i].addEventListener("click", function() {
+                    var inGroup = document.getElementsByClassName(this.getAttribute("data-group"));
+                    this.innerHTML = (this.innerHTML.indexOf("+") > -1) ? this.innerHTML.replace("+", "-") : this.innerHTML.replace("-", "+");
+                    for (var j = 0; j < inGroup.length; j++) {
+                        inGroup[j].style.display = (inGroup[j].style.display !== "none") ? "none" : "table-row";
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

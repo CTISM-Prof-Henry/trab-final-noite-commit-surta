@@ -1,12 +1,4 @@
-/*
-  dom.js - Manipulação de DOM e interface
-  
-  Este arquivo contém todas as funções que interagem diretamente com o DOM (Document Object Model).
-  Inclui: abertura de modais, atualização de tabelas, criação de cards, manipulação de eventos.
-  
-  NÃO É TESTÁVEL com ferramentas convencionais de teste unitário.
-  As funções deste arquivo dependem do jQuery e do Bootstrap para funcionarem corretamente.
-*/
+
 
 /**
  * Mapa para armazenar cores atribuídas a cada agendamento

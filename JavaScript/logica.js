@@ -1,9 +1,4 @@
-/*
-  logica.js - Lógica de negócio pura (TESTÁVEL)
-  
-  Este arquivo contém apenas funções puras que não manipulam DOM.
-  Todas as funções aqui podem ser testadas com QUnit/Jest sem problemas.
-*/
+
 
 // Lista de todas as salas possíveis por bloco
 const salasPorBloco = {

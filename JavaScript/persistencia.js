@@ -1,9 +1,3 @@
-/*
-  persistencia.js - Gerenciamento de localStorage e IndexedDB
-  
-  Este arquivo contém funções para salvar e recuperar dados.
-  Usa IndexedDB quando disponível, com fallback para localStorage.
-*/
 
 /*
   carregarSalasCadastradas()

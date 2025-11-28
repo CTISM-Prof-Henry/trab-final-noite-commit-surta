@@ -1,9 +1,4 @@
-/*
-  indexeddb.js - Gerenciamento de IndexedDB para o sistema de agendamento
-  
-  Este arquivo contém a classe DataHandler para gerenciar dados usando IndexedDB.
-  Substitui o localStorage para armazenamento mais robusto.
-*/
+
 
 class DataHandler {
     constructor() {

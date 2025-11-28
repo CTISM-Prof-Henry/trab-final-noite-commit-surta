@@ -1,6 +1,3 @@
-===============================================
-COMANDOS PARA TESTAR O CÓDIGO
-===============================================
 
 COMANDOS PRINCIPAIS:
 
@@ -8,31 +5,8 @@ npm test
 npx eslint JavaScript/*.js
 npm test; npx eslint JavaScript/*.js
 
-
-VERIFICAÇÃO COMPLETA:
-
-npm install
-npm test
-npx eslint JavaScript/*.js
-git add .
-git commit -m "testes passando"
-git push
-
-
-COMANDOS ADICIONAIS:
-
-npm test -- --verbose
 npx eslint JavaScript/*.js --fix
 npx eslint JavaScript/*.js --format html --output-file eslint-report.html
-
-
-RESULTADO ESPERADO:
-
-npm test
-- Deve mostrar: 25 tests passed
-
-npx eslint JavaScript/*.js
-- Não deve mostrar nada (0 errors, 0 warnings)
 
 
 
