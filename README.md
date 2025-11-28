@@ -257,7 +257,7 @@ Resultado esperado: `25 passing`
 
 Trabalho Final de Desenvolvimento de Software
 
-Professor: Henry Cagnini
+Professor: Henry
 
 2025
 
