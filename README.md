@@ -2,15 +2,6 @@
 
 # Sistema de Agendamento Politécnico
 
-### Plataforma Web para Gestão de Salas e Recursos Educacionais
-
-[![Review Assignment](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/BJmkW5Ih)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests](https://img.shields.io/badge/tests-25%20passing-success)](./test/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-
-[Documentação](https://ctism-prof-henry.github.io/trab-final-noite-commit-surta/) • [Reportar Bug](https://github.com/CTISM-Prof-Henry/trab-final-noite-commit-surta/issues) • [Solicitar Feature](https://github.com/CTISM-Prof-Henry/trab-final-noite-commit-surta/issues)
-
 </div>
 
 ---
@@ -268,4 +259,5 @@ Professor: Henry
 <div align="center">
 
 </div>
+
 
