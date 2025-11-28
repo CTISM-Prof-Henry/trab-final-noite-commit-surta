@@ -25,7 +25,7 @@ O **Sistema de Agendamento Politécnico** é uma aplicação web desenvolvida pa
 - **Sistema de Reservas Inteligente**: Agendamento com validação automática de conflitos de horário
 - **Visualização em Tempo Real**: Tabela semanal interativa mostrando ocupação de todas as salas
 - **Busca Avançada**: Filtros por bloco, tipo, capacidade, responsável e período (manhã/tarde/noite)
-- **Persistência Robusta**: Armazenamento híbrido usando IndexedDB com fallback para localStorage
+- **Persistência Robusta**: Armazenamento híbrido usando IndexedDB
 - **Código Testado**: Cobertura de testes automatizados com 25 casos de teste
 
 ---
@@ -47,7 +47,7 @@ Acesse a aplicação em produção: **[https://ctism-prof-henry.github.io/trab-f
 
 ### Persistência de Dados
 - **IndexedDB** - Banco de dados NoSQL do navegador (principal)
-- **localStorage** - Armazenamento de backup e fallback
+- **localStorage** - Armazenamento de backup 
 
 ### Qualidade de Código
 - **ESLint** - Análise estática de código
@@ -268,3 +268,4 @@ Professor: Henry
 <div align="center">
 
 </div>
+
