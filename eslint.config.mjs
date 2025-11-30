@@ -5,6 +5,7 @@ import { defineConfig } from "eslint/config";
 // Configuração simples focada em JavaScript (projeto não usa React)
 export default defineConfig([
   {
+    ignores: ["site/**", "node_modules/**", "**/*.min.js"],
     files: ["**/*.{js,mjs,cjs,jsx}"],
     plugins: { js },
     extends: ["js/recommended"],
@@ -46,6 +47,19 @@ export default defineConfig([
   // Desativar regra no-unused-vars em arquivos que expõem funções para o HTML
   {
     files: ["JavaScript/dom.js", "JavaScript/persistenciaDados.js", "JavaScript/indexeddb.js", "JavaScript/index.js"],
+    rules: {
+      'no-unused-vars': 'off'
+    }
+  },
+  // Configurações específicas para os testes QUnit
+  {
+    files: ["test/**/*.js"],
+    languageOptions: {
+      globals: {
+        QUnit: 'readonly',
+        global: 'readonly'
+      }
+    },
     rules: {
       'no-unused-vars': 'off'
     }
