@@ -1,4 +1,3 @@
-
 /*
   carregarSalasCadastradas()
   Carrega salas do localStorage (fallback quando IndexedDB não está pronto)

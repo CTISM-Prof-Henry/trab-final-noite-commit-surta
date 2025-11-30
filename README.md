@@ -59,7 +59,7 @@ trab-final-noite-commit-surta/
 │
 ├── JavaScript/
 │   ├── logica.js           # Funções puras (validações, filtros, regras de negócio)
-│   ├── persistencia.js     # Camada de persistência (localStorage + IndexedDB)
+│   ├── persistenciaDados.js     # Camada de persistência (localStorage + IndexedDB)
 │   ├── indexeddb.js        # Implementação completa do IndexedDB
 │   └── dom.js              # Manipulação da interface e eventos
 │
