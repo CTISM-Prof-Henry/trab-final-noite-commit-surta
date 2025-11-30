@@ -1,3 +1,4 @@
+/* exportado cadastroSalas, abrirModalAgendamento, consultarCadastros, filtrarCadastros, atualizarSalas, excluirSala, excluirAgendamento */
 
 
 /**
@@ -386,6 +387,8 @@ function atualizarSalas(formulario = '') {
 }
 
 /* ========== TABELA SEMANAL ========== */
+
+/* exportado cadastroSalas, abrirModalAgendamento, consultarCadastros, filtrarCadastros, atualizarSalas, excluirSala, excluirAgendamento */
 
 /**
  * Renderiza a tabela semanal com todos os agendamentos.

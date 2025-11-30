@@ -1,3 +1,4 @@
+/* exportado cadastroSalas, abrirModalAgendamento, consultarCadastros, filtrarCadastros, excluirSala, excluirAgendamento */
 
 /*
   JavaScript de Agendamento e Cadastro de Salas
@@ -15,7 +16,6 @@
     - Verificar conflito de horário por sala/dia.
     - Limitar capacidade do auditório a 100
 */
-
 function cadastroSalas() {
   // Abre o modal de cadastro (usa jQuery/bootstrap modal). Apenas UI, sem lógica.
   $('#modalum').modal('show');
