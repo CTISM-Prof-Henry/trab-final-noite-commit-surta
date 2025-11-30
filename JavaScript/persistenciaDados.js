@@ -1,3 +1,4 @@
+/* exportado salvarSalasCadastradas, salvarAgendamentos, carregarSalasCadastradas, carregarAgendamentos */
 /*
   carregarSalasCadastradas()
   Carrega salas do localStorage (fallback quando IndexedDB não está pronto)

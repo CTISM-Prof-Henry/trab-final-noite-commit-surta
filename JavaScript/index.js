@@ -729,3 +729,6 @@ if (typeof module !== "undefined") {
   };
 }
 
+
+/* exportado cadastroSalas, abrirModalAgendamento, consultarCadastros, filtrarCadastros, excluirSala, excluirAgendamento */
+

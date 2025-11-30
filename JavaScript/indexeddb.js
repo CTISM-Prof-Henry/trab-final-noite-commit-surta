@@ -321,6 +321,7 @@ class DataHandler {
     }
 }
 
+/* exportado dataHandler */
 // Instância global do DataHandler
 let dataHandler = null;
 
