@@ -93,7 +93,7 @@ function atualizarListaCadastros() {
         </div>
         <div class="card-body">
           <div class="d-flex align-items-center mb-3">
-            <i class="fa ${sala.tipo === 'Laboratório' ? 'fa-desktop' : sala.tipo === 'Auditório' ? 'fa-theater-masks' : 'fa-door-closed'}" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
+            <i class="fa ${sala.tipo === 'Laboratório' ? 'fa-desktop' : sala.tipo === 'Auditorio' ? 'fa-theater-masks' : 'fa-door-closed'}" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
             <div class="text-left">
               <h6 class="mb-0">${sala.tipo}</h6>
             </div>
@@ -206,13 +206,13 @@ function cadastrarSala(event) {
   }
 
   // Validações específicas para auditório
-  if (bloco === 'Auditório') {
+  if (bloco === 'Auditorio') {
     if (capacidade > 100) {
       alert('A capacidade máxima do auditório é 100 pessoas.');
       return;
     }
-    if (tipo !== 'Auditório') {
-      document.getElementById('tipo').value = 'Auditório';
+    if (tipo !== 'Auditorio') {
+      document.getElementById('tipo').value = 'Auditorio';
     }
   }
 
@@ -221,7 +221,7 @@ function cadastrarSala(event) {
     bloco,
     sala,
     capacidade,
-    tipo: bloco === 'Auditório' ? 'Auditório' : tipo,
+    tipo: bloco === 'Auditorio' ? 'Auditorio' : tipo,
     dataCadastro: new Date().toLocaleDateString()
   });
 
@@ -277,8 +277,8 @@ function atualizarSalas(formulario = '') {
   }
 
   // Se for Auditório, força o tipo para Auditório
-  if (blocoSelect.value === 'Auditório') {
-    tipoSelect.value = 'Auditório';
+  if (blocoSelect.value === 'Auditorio') {
+    tipoSelect.value = 'Auditorio';
     tipoSelect.disabled = true;
   } else {
     tipoSelect.disabled = false;
@@ -583,7 +583,7 @@ function criarCardAgendamento(agendamento) {
 
   const iconeClasse = {
     'Laboratório': 'fa-desktop',
-    'Auditório': 'fa-theater-masks'
+    'Auditorio': 'fa-theater-masks'
   }[agendamento.tipo] || 'fa-door-closed';
 
   card.innerHTML = `

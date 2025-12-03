@@ -78,7 +78,7 @@ function validarCadastroSala(bloco, sala, capacidade, tipo, salasCadastradas) {
   }
 
   // Validações específicas para auditório
-  if (bloco === 'Auditório') {
+  if (bloco === 'Auditorio') {
     if (capacidade > 100) {
       return { valido: false, erro: 'A capacidade máxima do auditório é 100 pessoas.' };
     }
@@ -135,7 +135,7 @@ function validarAgendamento(dadosAgendamento, agendamentos) {
   }
 
   // Validação da capacidade do auditório
-  if (bloco === 'Auditório' && capacidade > 100) {
+  if (bloco === 'Auditorio' && capacidade > 100) {
     return { valido: false, erro: 'A capacidade máxima do auditório é de 100 pessoas.' };
   }
 

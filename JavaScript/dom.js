@@ -142,7 +142,7 @@ function atualizarListaCadastros() {
             <!--Ícone dinâmico baseado no tipo da sala-->
             <i class="fa ${
               sala.tipo === 'Laboratório' ? 'fa-desktop' : // Ícone de computador para laboratório
-              sala.tipo === 'Auditório' ? 'fa-theater-masks' : // Ícone de teatro para auditório
+              sala.tipo === 'Auditorio' ? 'fa-theater-masks' : // Ícone de teatro para auditório
               'fa-door-closed' // Ícone de porta para sala de aula
             }" style="font-size:2rem; color:#0d2e6d; margin-right: 15px;"></i>
             <div class="text-left">
@@ -203,7 +203,7 @@ function criarCardAgendamento(agendamento) {
 
   const iconeClasse = {
     'Laboratório': 'fa-desktop',
-    'Auditório': 'fa-theater-masks'
+    'Auditorio': 'fa-theater-masks'
   }[agendamento.tipo] || 'fa-door-closed';
 
   card.innerHTML = `
@@ -332,8 +332,8 @@ function atualizarSalas(formulario = '') {
   }
 
   // Regra especial: Se o bloco é Auditório, força o tipo e desabilita o campo
-  if (blocoSelect.value === 'Auditório') {
-    tipoSelect.value = 'Auditório';
+  if (blocoSelect.value === 'Auditorio') {
+    tipoSelect.value = 'Auditorio';
     tipoSelect.disabled = true; // Usuário não pode alterar
   } else {
     tipoSelect.disabled = false; // Permite alteração
@@ -507,7 +507,7 @@ function cadastrarSala(event) {
   }
 
   // Forçar tipo se for Auditório (regra de negócio especial)
-  const tipoFinal = bloco === 'Auditório' ? 'Auditório' : tipo;
+  const tipoFinal = bloco === 'Auditorio' ? 'Auditorio' : tipo;
 
   // Adicionar sala ao array global e persistir no localStorage/IndexedDB
   adicionarSala({ bloco, sala, capacidade, tipo: tipoFinal });
