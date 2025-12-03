@@ -90,6 +90,8 @@ class DataHandler {
         });
 
         this.loadAllAgendamentos((agends) => {
+            if (!window.agendamentos) window.agendamentos = []; // ← SEGUNDA COISA
+
             if (agends && agends.length > 0) {
                 agendamentos.length = 0;
                 agendamentos.push(...agends);

@@ -1,3 +1,5 @@
+
+
 /* exportado cadastroSalas, abrirModalAgendamento, consultarCadastros, filtrarCadastros, excluirSala, excluirAgendamento */
 
 /*
@@ -415,7 +417,7 @@ const realizarAgendamento = function(event) {
   }
 
   // Validação da capacidade do auditório
-  if (bloco === 'Auditório' && capacidade > 100) {
+  if (bloco === 'Auditorio' && capacidade > 100) {
     alert('A capacidade máxima do auditório é de 100 pessoas.');
     return;
   }
