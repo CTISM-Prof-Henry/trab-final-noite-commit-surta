@@ -199,13 +199,8 @@ Acesse: `http://localhost:8000`
 
 ## Testes
 
-O projeto possui **25 testes automatizados** cobrindo:
+O projeto possui **10 testes automatizados**;
 
-- **7 testes** de cadastro de salas
-- **8 testes** de validação de agendamentos
-- **4 testes** de verificação de períodos
-- **4 testes** de filtros e buscas
-- **2 testes** de funções utilitárias
 
 ### Executar Testes
 
@@ -213,7 +208,7 @@ O projeto possui **25 testes automatizados** cobrindo:
 npm test
 ```
 
-Resultado esperado: `25 passing`
+Resultado esperado: `10 passing`
 
 ---
 
@@ -259,5 +254,6 @@ Professor: Henry
 <div align="center">
 
 </div>
+
 
 
